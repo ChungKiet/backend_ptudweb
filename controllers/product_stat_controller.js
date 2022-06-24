@@ -50,7 +50,26 @@ class VaccineHisController {
 
    // view all (limit per page)
    async view_all (req, res, next) {
-      
+      const productStats = await ProductStat.find({});
+      try {
+         if (productStats) {
+            res.send({
+               "msg": 1, 'prod_stats': productStats
+               // "error": { "code": 409, "message": "Username already exists" }
+            });
+         }
+         else {
+            res.status(401).send({
+               "msg": 0, 'prod_stats': null
+               // "error": { "code": 401, "message": "Registration failed." }
+            });
+         }
+      } catch (error) {
+         res.status(401).send({
+            "msg": 0, 'user': null
+            // "error": { "code": 401, "message": "Registration failed." }
+         });
+      }
    }   
 
 }

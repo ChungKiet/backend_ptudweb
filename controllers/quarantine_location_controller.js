@@ -1,61 +1,26 @@
-const mongoose = require('mongoose');
-const validator = require('validator');
-
-const quarantineLocationSChema = new mongoose.Schema({
-   id: {
-      type: String,
-      required: true,
-   },
-   name: {
-      type: String,
-      required: true,
-   },
-   address: {
-      type: String,
-   },
-   capacity: {
-      type: Number,
-      required: true
-   },
-   amount: {
-      type: Number,
-      required: true
-   },
-   state: {
-      type: Boolean,
-      required: true
-   },
-});
-
 const QuarantineLoc = mongoose.model('QuarantineLoc', quarantineLocationSChema);
-
-module.exports = QuarantineLoc;
-
-const VaccineHis = require("../models/vaccine_history");
-const User = require("../models/user");
-
-class VaccineHisController {  
+class QuarantineLocController {  
 
    // [POST] /users/register --> Create new user (call for manager)
 
    // find user by req.id --> if not exists --> pass else --> check type of vaccine in range of value --> oke? add
    async add_history(req, res, next) {
-      const { id, name, password, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
+      const { id, name, address, capacity, amount, state } = req.body;
       // console.log({ name, gender, birthday, email, username, password });
-      const userExists = await User.findOne({ username });
-      if (userExists) {
+      const quarantine_loc = await QuarantineLoc.findOne({ id });
+      if (quarantine_loc) {
             res.send({
-               "msg": 3, 'user': null
+               "msg": 3, 'quarantine_loc': null
                // "error": { "code": 409, "message": "Username already exists" }
             });
          }
          try {
-            const user = await VaccineHis.create({id, name, password, birthday, address, email, phone, min_exchange, quarantine_state, updated_state });
-            res.send({ "msg": 1, 'user': user });
+            const quarantine_loc = await QuarantineLoc.create({id, name, address, capacity, amount, state });
+            res.send({ "msg": 1, 'quarantine_loc': quarantine_loc });
          }
          catch (err) {
             res.status(401).send({
-               "msg": 0, 'user': null
+               "msg": 0, 'quarantine_loc': null
                // "error": { "code": 401, "message": "Registration failed." }
             });
          }
@@ -63,20 +28,83 @@ class VaccineHisController {
 
    // update loc
    async update_loc(req, res, next) {
-
+      const {id, name, address, capacity, amount, state } = req.body;
+      try {
+         const quarantine_loc = await QuarantineLoc.updateOne({ id: id}, {
+            name, address, capacity, amount, state
+         });
+         if (quarantine_loc.modifiedCount === 1) {
+            res.json({ "result": 1, "message": "Update set of quarantine location success" });
+         }
+         else {
+            res.json({ "result": 0, "message": "Update set of quarantine location failed" });
+         }
+      } catch (error) {
+         res.status(500).send({
+            "error": {
+               "result": 0,
+               "code": 500,
+               "message": "Server internal error. Update set of quarantine location failed."
+            }
+         });
+      }
    }
    // check the capacity of that loc
    // if is not full --> update else no
    
    // view loc
    async view_loc(req, res, next) {
-
+      const id = req.body.id;
+      try {
+         const quarantine_loc = await QuarantineLoc.findOne({
+            id: id
+         }); // ignore this info
+         if (quarantine_loc) {
+            res.json(quarantine_loc);
+         }
+         else {
+            res.status(404).send({
+               "error": {
+                  "code": 404,
+                  "message": "Quarantine Location Not Found"
+               }
+            });
+         }
+      } catch (error) {
+         res.status(500).send({
+            "error": {
+               "result": 0,
+               "code": 500,
+               "message": "Server internal error. Get quarantine location failed."
+            }
+         });
+      }
    }
    // view all loc (limit per page)
    async view_all_loc(req, res, next){
-      
+      try {
+         const quarantine_locs = await QuarantineLoc.findOne({}); // ignore this info
+         if (quarantine_locs) {
+            res.json(quarantine_locs);
+         }
+         else {
+            res.status(404).send({
+               "error": {
+                  "code": 404,
+                  "message": "Quarantine Location Not Found"
+               }
+            });
+         }
+      } catch (error) {
+         res.status(500).send({
+            "error": {
+               "result": 0,
+               "code": 500,
+               "message": "Server internal error. Get quarantine location failed."
+            }
+         });
+      }
    }
-
 }
 
-module.exports = VaccineHisController
+module.exports = QuarantineLocController

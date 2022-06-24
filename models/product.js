@@ -10,7 +10,7 @@ const prodSchema = new mongoose.Schema({
       type: String,
       required: true,
    },
-   buyLimit: {
+   buy_limit: {
       type: Number,
       required: true,
       default: 1,

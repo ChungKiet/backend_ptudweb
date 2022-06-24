@@ -6,18 +6,17 @@ const setOfProductSchema = new mongoose.Schema({
       type: String,
       required: true,
    },
-   idProd: {
-      type: String,
-      required: true,
-   },
    name: {
       type: String,
       required: true,
    },
    image: {
-      type: String, required: false
+      type: Array, of: String, require: false
    },
-   buyLimit: {
+   id_prods : {
+      type: Array, of: String, require: false
+   },
+   buy_limit: {
       type: Number,
       required: true,
       default: 1,
@@ -27,7 +26,7 @@ const setOfProductSchema = new mongoose.Schema({
       required: true,
       default: 0,
    },
-   expireAt: {
+   expired_at: {
       type: Date, required: true, default: '2001-01-01T00:00:00.000Z'
    },
 });
