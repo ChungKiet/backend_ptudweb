@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema({
          }
       },
    },
-   minExchange: {
+   min_exchange: {
       type: Number,
       default: 0,
    },

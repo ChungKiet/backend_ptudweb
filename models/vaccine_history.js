@@ -6,18 +6,18 @@ const vaccineHistorySchema = new mongoose.Schema({
       type: String,
       required: true,
    },
-   idVaccine: {
+   id_vaccine: {
       type: Number,
       required: true,
    },
-   typeOfVaccine: {
+   type_of_vaccine: {
       type: Number,
       required: true,
    },
    address: {
       type: String,
    },
-   dateVac: {
+   date_vac: {
       type: Date, required: true, default: '2001-01-01T00:00:00.000Z'
    },
 });

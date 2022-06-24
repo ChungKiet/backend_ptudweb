@@ -1,0 +1,58 @@
+const SetOfProdStat = require("../models/set_of_product_stat")
+
+class SetOfProdStatController {  
+
+   // [POST] /users/register --> Create new user (call for manager)
+
+   // find user by req.id --> if not exists --> pass else --> check type of vaccine in range of value --> oke? add
+   // check list of product is already exists? 
+   // push image is in FE, BE only receive array of image (small, medium)
+   // check value is not null ? add : not
+
+   // [POST] /set-of-prod-stat/add-new-buy
+   async add_new_set(req, res, next) {
+      const { id, day, buy } = req.body;
+      // console.log({ name, gender, birthday, email, username, password });
+      const setOfProdStat = await SetOfProdStat.findOne({ id: id, day: day });
+      if (setOfProdStat) {
+         const setOfProdStat = SetOfProdStat.updateOne({id: id, day: day}, {buy: setOfProdStat?.buy + buy})
+         res.send({
+            "msg": 3, 'set-of-prod-stat': setOfProdStat
+            // "error": { "code": 409, "message": "Username already exists" }
+         });
+      }
+      else {
+         try {
+            const user = await SetOfProdStat.create({id, day, buy });
+            res.send({ "msg": 1, 'set-of-prod-stat': setOfProdStat });
+         }
+         catch (err) {
+            res.status(401).send({
+               "msg": 0, 'set-of-prod-stat': null
+               // "error": { "code": 401, "message": "Registration failed." }
+            });
+         }
+      }
+   }
+
+   // [GET] /set-of-prod-stat/view-all
+   async view_all(req, res, next) {
+      const { id, day, buy } = req.body;
+      // console.log({ name, gender, birthday, email, username, password });
+      const setOfProdStats = await SetOfProdStat.find({});
+      if (setOfProdStats) {
+         res.send({
+            "msg": 1, 'set-of-prod-stats': setOfProdStats
+            // "error": { "code": 409, "message": "Username already exists" }
+         });
+      }
+      else {
+         res.status(401).send({
+            "msg": 0, 'set-of-prod-stats': null
+            // "error": { "code": 401, "message": "Registration failed." }
+         });
+      }
+   }
+}
+
+module.exports = SetOfProdStatController
