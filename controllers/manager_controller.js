@@ -1,56 +1,45 @@
-const mongoose = require('mongoose');
-const validator = require('validator');
-
-const managerSchema = new mongoose.Schema({
-   name: {
-      type: String,
-      required: true,
-   },
-   password: {
-      type: String,
-      required: true,
-   },
-});
-
-const Manager = mongoose.model('Manager', managerSchema);
-
-module.exports = Manager;
-
-
-const VaccineHis = require("../models/vaccine_history");
 const User = require("../models/user");
+class ManagerController {  
 
-class VaccineHisController {  
-
-   // [POST] /users/register --> Create new user (call for manager)
-
-   // find user by req.id --> if not exists --> pass else --> check type of vaccine in range of value --> oke? add
-   async add_history(req, res, next) {
-      const { id, name, password, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
-      // console.log({ name, gender, birthday, email, username, password });
-      const userExists = await User.findOne({ username });
+   // [POST] /manager/register --> Create new user (call for manager)
+   async add_user(req, res, next) {
+      const { id, username,  name, password, user_type, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
+      const userExists = await User.findOne({ username : username });
       if (userExists) {
             res.send({
                "msg": 3, 'user': null
-               // "error": { "code": 409, "message": "Username already exists" }
             });
          }
-         try {
-            const user = await VaccineHis.create({id, name, password, birthday, address, email, phone, min_exchange, quarantine_state, updated_state });
-            res.send({ "msg": 1, 'user': user });
-         }
-         catch (err) {
-            res.status(401).send({
-               "msg": 0, 'user': null
-               // "error": { "code": 401, "message": "Registration failed." }
-            });
-         }
+      try {
+         const user = await User.create({id, username, name, password, user_type, birthday, address, email, phone, min_exchange, quarantine_state, updated_state });
+         res.send({ "msg": 1, 'user': user });
+      }
+      catch (err) {
+         res.status(401).send({
+            "msg": 0, 'user': null
+         });
+      }
    }
 
-   // update account (info or block)
-
    // delete 
+   async delete_user(req, res, next) {
+      const id = req.body.id;
+
+      try {
+         await User.deleteOne({
+            id: id
+         });
+         res.json({ "result": 1, "message": "Delete user successfully." });
+      } catch (error) {
+         res.status(404).send({
+            "error": {
+               "code": 404,
+               "message": "Internal error. User Not Found"
+            }
+         });
+      }
+   }
 
 }
 
-module.exports = VaccineHisController
+module.exports = ManagerController

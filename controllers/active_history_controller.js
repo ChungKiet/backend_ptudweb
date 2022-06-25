@@ -1,59 +1,58 @@
-const mongoose = require('mongoose');
-const validator = require('validator');
+// const mongoose = require('mongoose');
+// const validator = require('validator');
 
-const activeHisSchema = new mongoose.Schema({
-   id: {
-      type: String,
-      required: true,
-   },
-   name: {
-      type: String,
-      required: true,
-   },
-   time: {
-      type: Date, required: true, default: '2001-01-01T00:00:00.000Z'
-   },
-   action: {
-      type: Number, required: true
-   },
-});
+const ActiveHis = require("../models/active_history");
 
-const ActiveHis = mongoose.model('ActiveHis', activeHisSchema);
+// const activeHisSchema = new mongoose.Schema({
+//    id: {
+//       type: String,
+//       required: true,
+//    },
+//    name: {
+//       type: String,
+//       required: true,
+//    },
+//    time: {
+//       type: Date, required: true, default: '2001-01-01T00:00:00.000Z'
+//    },
+//    action: {
+//       type: Number, required: true
+//    },
+// });
 
-module.exports = ActiveHis;
+// const ActiveHis = mongoose.model('ActiveHis', activeHisSchema);
 
-class VaccineHisController {  
+// module.exports = ActiveHis;
 
-   // [POST] /users/register --> Create new user (call for manager)
+class ActiveHisController {  
 
-   // find user by req.id --> if not exists --> pass else --> check type of vaccine in range of value --> oke? add
    async add_history(req, res, next) {
-      const { id, name, password, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
-      // console.log({ name, gender, birthday, email, username, password });
-      const userExists = await User.findOne({ username });
-      if (userExists) {
-            res.send({
-               "msg": 3, 'user': null
-               // "error": { "code": 409, "message": "Username already exists" }
-            });
-         }
-         try {
-            const user = await VaccineHis.create({id, name, password, birthday, address, email, phone, min_exchange, quarantine_state, updated_state });
-            res.send({ "msg": 1, 'user': user });
-         }
-         catch (err) {
-            res.status(401).send({
-               "msg": 0, 'user': null
-               // "error": { "code": 401, "message": "Registration failed." }
-            });
-         }
+      const { id_user, id_act, time } = req.body;
+      try {
+         const act_his = await ActiveHis.create({ id_user, id_act, time });
+         res.send({ "msg": 1, 'act_his': act_his });
+      }
+      catch (err) {
+         res.status(401).send({
+            "msg": 0, 'act_his': null
+         });
+      }
    }
 
-   // add action history
-
    // view by id or name
+   async get_his_by_id(req, res, next) {
+      const { id_user } = req.body;
+      try {
+         const act_his = await ActiveHis.find({ id_user: id_user});
+         res.send({ "msg": 1, 'act_his': act_his });
+      }
+      catch (err) {
+         res.status(401).send({
+            "msg": 0, 'act_his': null
+         });
+      }
+   }
 
-   // view all or K account
 }
 
-module.exports = VaccineHisController
+module.exports = ActiveHisController

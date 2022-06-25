@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 
 const accStateSchema = new mongoose.Schema({
+   username: {
+      type: String,
+      required: true,
+   },
    name: {
       type: String,
       required: true,
@@ -14,7 +18,7 @@ const accStateSchema = new mongoose.Schema({
       type: Number, required: true
    },
    state: {
-      type: Boolean, required: true, default: '2001-01-01T00:00:00.000Z'
+      type: Boolean, required: true, default: false
    },
 });
 

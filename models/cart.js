@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 
 const cartSchema = new mongoose.Schema({
-   idUser: {
+   id_user: {
       type: String,
       required: true,
    },
-   idPro: {
+   id_prod: {
       type: String,
       required: true,
    },

@@ -6,7 +6,7 @@ const billSchema = new mongoose.Schema({
       type: String,
       required: true,
    },
-   idBuyer: {
+   id_buyer: {
       type: String,
       required: true,
    },

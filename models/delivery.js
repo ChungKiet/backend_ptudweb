@@ -10,17 +10,17 @@ const deliverySchema = new mongoose.Schema({
       type: String,
       required: true,
    },
-   dayDelivery: {
+   day_delivery: {
       type: Date, required: true, default: Date.now()
    },
-   dayExpect: {
+   day_expect: {
       type: Date, required: true, default: Date.now()
    },
    address: {
       type: String,
       required: true
    },
-   receiverName: {
+   receiver_name: {
       type: String,
       required: true,
    },

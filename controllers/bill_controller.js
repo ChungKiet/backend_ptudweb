@@ -1,63 +1,72 @@
-const mongoose = require('mongoose');
-const validator = require('validator');
+const Bill = require("../models/bill");
 
-const billSchema = new mongoose.Schema({
-   id: {
-      type: String,
-      required: true,
-   },
-   idBuyer: {
-      type: String,
-      required: true,
-   },
-   amount: {
-      type: Number,
-      required: true,
-   },
-   state: {
-      type: Boolean,
-      required: true,
-   },
-});
+class BillController {  
 
-const Bill = mongoose.model('Bill', billSchema);
-
-module.exports = Bill;
-
-class VaccineHisController {  
-
-   // [POST] /users/register --> Create new user (call for manager)
-
-   // find user by req.id --> if not exists --> pass else --> check type of vaccine in range of value --> oke? add
    async add_history(req, res, next) {
-      const { id, name, password, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
-      // console.log({ name, gender, birthday, email, username, password });
-      const userExists = await User.findOne({ username });
-      if (userExists) {
-            res.send({
-               "msg": 3, 'user': null
-               // "error": { "code": 409, "message": "Username already exists" }
-            });
-         }
-         try {
-            const user = await VaccineHis.create({id, name, password, birthday, address, email, phone, min_exchange, quarantine_state, updated_state });
-            res.send({ "msg": 1, 'user': user });
-         }
-         catch (err) {
-            res.status(401).send({
-               "msg": 0, 'user': null
-               // "error": { "code": 401, "message": "Registration failed." }
-            });
-         }
+      const { id, id_buyer, amount, state } = req.body;
+      const bill = await Bill.findOne({ id: id });
+      if (bill) {
+         res.send({
+            "msg": 3, 'bill': null
+         });
+      }
+      try {
+         const bill = await Bill.create({ id, id_buyer, amount, state });
+         res.send({ "msg": 1, 'bill': bill });
+      }
+      catch (err) {
+         res.status(401).send({
+            "msg": 0, 'bill': null
+         });
+      }
    }
 
-   // create view
-
    // update view
+   async add_history(req, res, next) {
+      const { id, id_buyer, amount, state } = req.body;
+      const bill = await Bill.findOne({ id: id });
+      if (bill) {
+         res.send({
+            "msg": 3, 'bill': null
+         });
+      }
+      try {
+         const bill = await Bill.create({ id, id_buyer, amount, state });
+         res.send({ "msg": 1, 'bill': bill });
+      }
+      catch (err) {
+         res.status(401).send({
+            "msg": 0, 'bill': null
+         });
+      }
+   }
 
    // view bill
+   async view_by_id(req, res, next) {
+      const { id } = req.body;
+      try {
+         const bill = await Bill.findOne({ id: id });
+         res.send({ "msg": 1, 'bill': bill });
+      }
+      catch (err) {
+         res.status(401).send({
+            "msg": 0, 'bill': null
+         });
+      }
+   }
 
    // view all bill
+   async view_all(req, res, next) {
+      try {
+         const bills = await Bill.find({});
+         res.send({ "msg": 1, 'bills': bills });
+      }
+      catch (err) {
+         res.status(401).send({
+            "msg": 0, 'bills': null
+         });
+      }
+   }
 }
 
-module.exports = VaccineHisController
+module.exports = BillController

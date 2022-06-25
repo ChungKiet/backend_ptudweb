@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 
 const orderProSchema = new mongoose.Schema({
-   id_user: {
+   id_order: {
       type: String,
       required: true,
    },

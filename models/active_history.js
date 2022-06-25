@@ -2,19 +2,16 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 
 const activeHisSchema = new mongoose.Schema({
-   id: {
+   id_user: {
       type: String,
       required: true,
    },
-   name: {
+   id_act: {
       type: String,
       required: true,
    },
    time: {
       type: Date, required: true, default: '2001-01-01T00:00:00.000Z'
-   },
-   action: {
-      type: Number, required: true
    },
 });
 

@@ -110,7 +110,7 @@ class SetOfProdController {
       const id = req.body.id;
       try {
          await SetOfProduct.deleteOne({ id: id });
-         res.json({ "result": 1, "message": "Delete set of products successfully." })
+         res.json({ "result": 1, "message": "Delete set of products successfully." });
       }
       catch (err) {
          res.status(500).send({

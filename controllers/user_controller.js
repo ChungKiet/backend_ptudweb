@@ -2,35 +2,13 @@ const User = require("../models/user");
 
 class UserController {  
 
-   // [POST] /users/register --> Create new user (call for manager)
-   async register(req, res, next) {
-      const { id, username,  name, password, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
-      // console.log({ name, gender, birthday, email, username, password });
-      const userExists = await User.findOne({ username : username });
-      if (userExists) {
-            res.send({
-               "msg": 3, 'user': null
-            });
-         }
-         try {
-            const user = await User.create({id, username, name, password, birthday, address, email, phone, min_exchange, quarantine_state, updated_state });
-            res.send({ "msg": 1, 'user': user });
-         }
-         catch (err) {
-            res.status(401).send({
-               "msg": 0, 'user': null
-               // "error": { "code": 401, "message": "Registration failed." }
-            });
-         }
-   }
-
    // [PUT] /users/update_profile ---> manager update
    async update_profile(req, res, next) {
-      const { id, username, name, password, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
+      const { id, username, name, password, user_type, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
       try {
          const user = await User.updateOne({ id: id}, {
             name, username, password, birthday, address, 
-            email, phone, min_exchange, quarantine_state,
+            user_type, email, phone, min_exchange, quarantine_state,
             updated_state
          });
          if (user.modifiedCount === 1) {
@@ -71,6 +49,7 @@ class UserController {
          });
       }
    }
+
    // [GET] /users/get-profile
    async user_profile(req, res, next) {
       const id = req.body.id;

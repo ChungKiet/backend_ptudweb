@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema({
       type: String,
       required: true,
    },
+   user_type : {
+      type: String,
+      required: true,
+   },
    birthday: {
       type: Date, required: true, default: '2001-01-01T00:00:00.000Z'
    },

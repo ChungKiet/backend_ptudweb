@@ -1,84 +1,89 @@
-// const mongoose = require('mongoose');
-// const validator = require('validator');
+const Order = require("../models/order");
 
-// const orderSchema = new mongoose.Schema({
-//    idUser: {
-//       type: String,
-//       required: true,
-//    },
-//    idOrder: {
-//       type: String,
-//       required: true,
-//    },
-//    amount: {
-//       type: Number,
-//       required: true,
-//       default: 1,
-//    },
-//    createdAt: {
-//       type: Date, required: true, default: Date.now()
-//    },
-//    state: {
-//       type: Boolean,
-//       required: true,
-//    },
-//    method: {
-//       type: String,
-//       required: true,
-//    },
-// });
-
-// const Order = mongoose.model('Order', orderSchema);
-
-// module.exports = Order;
-
-
-
-// const VaccineHis = require("../models/vaccine_history");
-// const User = require("../models/user");
-
-class VaccineHisController {  
+class OrderController {  
 
    // [POST] /users/register --> Create new user (call for manager)
-
-   // find user by req.id --> if not exists --> pass else --> check type of vaccine in range of value --> oke? add
-   async add_history(req, res, next) {
-      const { id, name, password, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
+   async add_new_order(req, res, next) {
+      const { id_user, id_order, amount, created_at, state, method } = req.body;
       // console.log({ name, gender, birthday, email, username, password });
-      const userExists = await User.findOne({ username });
-      if (userExists) {
+      const order = await Order.findOne({ id_order: id_order });
+      if (order) {
             res.send({
-               "msg": 3, 'user': null
-               // "error": { "code": 409, "message": "Username already exists" }
+               "msg": 3, 'order': null
             });
          }
-         try {
-            const user = await VaccineHis.create({id, name, password, birthday, address, email, phone, min_exchange, quarantine_state, updated_state });
-            res.send({ "msg": 1, 'user': user });
-         }
-         catch (err) {
-            res.status(401).send({
-               "msg": 0, 'user': null
-               // "error": { "code": 401, "message": "Registration failed." }
-            });
-         }
+      try {
+         const order = await Order.create({ id_order, id_user , amount, created_at, state, method });
+         res.send({ "msg": 1, 'order': order });
+      }
+      catch (err) {
+         res.status(401).send({
+            "msg": 0, 'order': null
+         });
+      }
    }
 
    // update
    async update_order(req, res, next){
-
+      const { id_user, id_order, amount, created_at, state, method } = req.body;
+      try {
+         const order = await Order.updateOne({ id_order: id_order} ,{ id_user, amount, created_at, state, method });
+         res.send({ "msg": 1, 'order': order });
+      }
+      catch (err) {
+         res.status(401).send({
+            "msg": 0, 'order': null
+         });
+      }
    }
 
    // view
    async view_order(req, res, next){
-
+      const { id_order } = req.body;
+      // console.log({ name, gender, birthday, email, username, password });
+      
+      try {
+         const order = await Order.findOne({ id_order: id_order });
+         if (order) {
+            res.send({
+               "msg": 3, 'order': order
+            });
+         }
+         else{
+            res.status(404).send({
+               "msg": 0, 'order': null
+            });
+         }
+      }
+      catch (err) {
+         res.status(500).send({
+            "error": {
+               "result": 0,
+               "code": 500,
+               "message": "Internal server error."
+            }
+         });
+      }
    }
 
    // delete
    async delete_order(req, res, next){
-      
+      const id_order = req.body.id_order;
+      try {
+         await SetOfProduct.deleteOne({ id_order: id_order });
+         res.json({ "result": 1, "message": "Delete order successfully." })
+      }
+      catch (err) {
+         res.status(500).send({
+            "error": {
+               "result": 0,
+               "code": 500,
+               "message": "Delete order failed."
+            }
+         });
+      }
    }
 
 }
 
-module.exports = VaccineHisController
+module.exports = OrderController

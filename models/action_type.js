@@ -3,7 +3,7 @@ const validator = require('validator');
 
 const acTypeSchema = new mongoose.Schema({
    id: {
-      type: Number,
+      type: String,
       required: true,
    },
    name: {
