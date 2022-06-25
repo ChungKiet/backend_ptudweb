@@ -6,7 +6,7 @@ class UserController {
    async register(req, res, next) {
       const { id, name, password, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
       // console.log({ name, gender, birthday, email, username, password });
-      const userExists = await User.findOne({ username });
+      const userExists = await User.findOne({ name : name });
       if (userExists) {
             res.send({
                "msg": 3, 'user': null
@@ -55,7 +55,7 @@ class UserController {
    // [POST] /users/login
    async login(req, res, next) {
       const { name, password } = req.body;
-      const user = await User.findOne({ name });
+      const user = await User.findOne({ name: name });
       if (!user) {
          res.send({
             "isLogin": 2, "user": null

@@ -6,7 +6,7 @@ class TypeOfVaccineController {
    async add_new_type(req, res, next) {
       const { id, name } = req.body;
       // console.log({ name, gender, birthday, email, username, password });
-      const vaccineType = await TypeOfVaccine.findOne({ id });
+      const vaccineType = await TypeOfVaccine.findOne({ id: id });
       if (vaccineType) {
          res.send({
             "msg": 3, 'vaccine': null

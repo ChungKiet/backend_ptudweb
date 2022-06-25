@@ -9,7 +9,7 @@ class VaccineHisController {
    async add_history(req, res, next) {
       const { id, id_vaccine, type_of_vaccine, birthday, address, date_vac} = req.body;
       // console.log({ name, gender, birthday, email, username, password });
-      const userExists = await User.findOne({ id });
+      const userExists = await User.findOne({ id: id });
       if (userExists) {
             res.send({
                "msg": 3, 'vaccineHis': null
@@ -32,7 +32,7 @@ class VaccineHisController {
    async get_vaccine_history_by_id(req, res, next) {
       const { id } = req.body;
       // console.log({ name, gender, birthday, email, username, password });
-      const userExists = await User.findOne({ id });
+      const userExists = await User.findOne({ id: id });
       if (userExists) {
             res.send({
                "msg": 3, 'vaccineHis': null

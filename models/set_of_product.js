@@ -21,6 +21,9 @@ const setOfProductSchema = new mongoose.Schema({
       required: true,
       default: 1,
    },
+   buy_limit_prods : {
+      type: Array, of: Number, require: false
+   },
    price: {
       type: Number,
       required: true,

@@ -7,7 +7,7 @@ class QuarantineLocController {
    async add_history(req, res, next) {
       const { id, name, address, capacity, amount, state } = req.body;
       // console.log({ name, gender, birthday, email, username, password });
-      const quarantine_loc = await QuarantineLoc.findOne({ id });
+      const quarantine_loc = await QuarantineLoc.findOne({ id: id });
       if (quarantine_loc) {
             res.send({
                "msg": 3, 'quarantine_loc': null
@@ -83,7 +83,7 @@ class QuarantineLocController {
    // view all loc (limit per page)
    async view_all_loc(req, res, next){
       try {
-         const quarantine_locs = await QuarantineLoc.findOne({}); // ignore this info
+         const quarantine_locs = await QuarantineLoc.find({}); // ignore this info
          if (quarantine_locs) {
             res.json(quarantine_locs);
          }

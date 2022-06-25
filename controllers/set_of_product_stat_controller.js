@@ -1,15 +1,6 @@
 const SetOfProdStat = require("../models/set_of_product_stat")
 
 class SetOfProdStatController {  
-
-   // [POST] /users/register --> Create new user (call for manager)
-
-   // find user by req.id --> if not exists --> pass else --> check type of vaccine in range of value --> oke? add
-   // check list of product is already exists? 
-   // push image is in FE, BE only receive array of image (small, medium)
-   // check value is not null ? add : not
-
-   // [POST] /set-of-prod-stat/add-new-buy
    async add_new_set(req, res, next) {
       const { id, day, buy } = req.body;
       // console.log({ name, gender, birthday, email, username, password });

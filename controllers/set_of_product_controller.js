@@ -2,21 +2,17 @@ const SetOfProduct = require("../models/set_of_product");
 const Product = require("../models/product");
 
 class SetOfProdController {  
-
-   // [POST] /users/register --> Create new user (call for manager)
-
-   // find user by req.id --> if not exists --> pass else --> check type of vaccine in range of value --> oke? add
    async add_new_prod(req, res, next) {
-      const { id, name, image, id_prods, buy_limit, price, expire_at } = req.body;
+      const { id, name, image, id_prods, buy_limit, buy_limit_prods, price, expire_at } = req.body;
       // console.log({ name, gender, birthday, email, username, password });
-      const setOfProds = await SetOfProduct.findOne({ id });
+      const setOfProds = await SetOfProduct.findOne({ id: id });
       if (setOfProds) {
             res.send({
                "msg": 3, 'set_of_prods': null
             });
          }
          try {
-            const setOfProds = await SetOfProduct.create({id, name, image, id_prods, buy_limit, price, expire_at });
+            const setOfProds = await SetOfProduct.create({id, name, image, id_prods, buy_limit, buy_limit_prods, price, expire_at });
             res.send({ "msg": 1, 'set_of_prods': setOfProds });
          }
          catch (err) {
@@ -27,10 +23,10 @@ class SetOfProdController {
    }
 
    async update_product(req, res, next) {
-      const {id, name, image, id_prods, buy_limit, price, expire_at} = req.body;
+      const {id, name, image, id_prods, buy_limit, buy_limit_prods,  price, expire_at} = req.body;
       try {
          const setOfProds = await SetOfProduct.updateOne({ id: id}, {
-            name, image, id_prods, buy_limit, 
+            name, image, id_prods, buy_limit, buy_limit_prods,
             price, expire_at
          });
          if (setOfProds.modifiedCount === 1) {
@@ -52,10 +48,9 @@ class SetOfProdController {
 
    async view_all_product(req, res, next) {
       try {
-         const allOfSetOfProds = await SetOfProduct.findOne({}); // ignore this info
+         const allOfSetOfProds = await SetOfProduct.find({}); // ignore this info
          let result = []
          if (allOfSetOfProds) {
-            const products = await Product.find({id : setOfProds.id_prods})
             for (let i = 0; i < allOfSetOfProds.length; i++){
                const products = await Product.find({id : allOfSetOfProds[i].id_prods})
                result.push({"set_of_prod": allOfSetOfProds[i], "products": products})
