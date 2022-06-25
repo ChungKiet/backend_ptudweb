@@ -1,41 +1,41 @@
-const mongoose = require('mongoose');
-const validator = require('validator');
+// const mongoose = require('mongoose');
+// const validator = require('validator');
 
-const orderSchema = new mongoose.Schema({
-   idUser: {
-      type: String,
-      required: true,
-   },
-   idOrder: {
-      type: String,
-      required: true,
-   },
-   amount: {
-      type: Number,
-      required: true,
-      default: 1,
-   },
-   createdAt: {
-      type: Date, required: true, default: Date.now()
-   },
-   state: {
-      type: Boolean,
-      required: true,
-   },
-   method: {
-      type: String,
-      required: true,
-   },
-});
+// const orderSchema = new mongoose.Schema({
+//    idUser: {
+//       type: String,
+//       required: true,
+//    },
+//    idOrder: {
+//       type: String,
+//       required: true,
+//    },
+//    amount: {
+//       type: Number,
+//       required: true,
+//       default: 1,
+//    },
+//    createdAt: {
+//       type: Date, required: true, default: Date.now()
+//    },
+//    state: {
+//       type: Boolean,
+//       required: true,
+//    },
+//    method: {
+//       type: String,
+//       required: true,
+//    },
+// });
 
-const Order = mongoose.model('Order', orderSchema);
+// const Order = mongoose.model('Order', orderSchema);
 
-module.exports = Order;
+// module.exports = Order;
 
 
 
-const VaccineHis = require("../models/vaccine_history");
-const User = require("../models/user");
+// const VaccineHis = require("../models/vaccine_history");
+// const User = require("../models/user");
 
 class VaccineHisController {  
 

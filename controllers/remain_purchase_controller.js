@@ -1,25 +1,23 @@
 const RemainPurchase = require("../models/remain_purchase");
-
 class RemainPurchaseController {  
 
    async add_new_remain(req, res, next) {
       const { id_user, id_set, id_prods, remains } = req.body;
-      // console.log({ name, gender, birthday, email, username, password });
       const remainPur = await RemainPurchase.findOne({ id_user: id_user, id_set: id_set});
       if (remainPur) {
-         const remainPur = RemainPurchase.updateOne({id_user: id_user, id_set: id_set}, {id_prods: id_prods, remains: remains})
+         const remainPur = RemainPurchase.updateOne({id_user: id_user, id_set: id_set}, {id_prods: id_prods, remain: remain})
          res.send({
-            "msg": 3, 'remain_purchase': remainPur
+            "msg": 3, 'remain_purchase': remainPur.remain
          });
       }
       else {
          try {
             const remainPur = await RemainPurchase.create({ id_user, id_set, id_prods, remains });
-            res.send({ "msg": 1, 'remain_purchase': remainPur });
+            res.send({ "msg": 1, 'remain_purchase': remainPur.remain });
          }
          catch (err) {
             res.status(401).send({
-               "msg": 0, 'remain_purchase': null
+               "msg": 0, 'remain_purchase': -1
             });
          }
       }
@@ -31,12 +29,12 @@ class RemainPurchaseController {
       const remainPur = await RemainPurchase.findOne({id_user: id_user, id_set: id_set});
       if (remainPur) {
          res.send({
-            "msg": 1, 'remain_purchase': remainPur
+            "msg": 1, 'remain_purchase': remainPur.remain
          });
       }
       else {
          res.status(401).send({
-            "msg": 0, 'remain_purchase': null
+            "msg": 0, 'remain_purchase': -1
          });
       }
    }

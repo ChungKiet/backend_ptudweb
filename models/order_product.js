@@ -2,21 +2,18 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 
 const orderProSchema = new mongoose.Schema({
-   id: {
+   id_user: {
       type: String,
       required: true,
    },
-   idPro: {
-      type: String,
-      required: true,
+   id_sets: {
+      type: Array, of: String, required: true,
    },
-   amount: {
-      type: Number,
-      required: true,
+   amounts: {
+      type: Array, of: Number, required: true, default: 1, 
    },
-   currPrice: {
-      type: Number,
-      required: true,
+   curr_prices: {
+      type: Array, of: Number, required: true,
    },
 });
 

@@ -2,24 +2,15 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 
 const priceHisSChema = new mongoose.Schema({
-   id: {
+   id_prod: {
       type: String,
       required: true,
    },
-   idPrice: {
-      type: String,
-      required: true,
+   prices: {
+      type: Array, of: Number, require: false
    },
-   startTime: {
-      type: Date, required: true, default: Date.now()
-   },
-   price: {
-      type: Number,
-      required: true
-   },
-   state: {
-      type: String,
-      required: true
+   start_times: {
+      type: Array, of: Date, require: false
    },
 });
 

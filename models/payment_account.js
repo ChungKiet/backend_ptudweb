@@ -1,10 +1,13 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
 
 const paymentAccSchema = new mongoose.Schema({
-   name: {
+   username: {
       type: String,
       required: true,
+   },
+   password: {
+      type: String,
+      require: true
    },
    amount: {
       type: Number,

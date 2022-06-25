@@ -1,5 +1,6 @@
 const SetOfProdStat = require("../models/set_of_product_stat")
 
+// phần FE xử lý date dd/mm/yyyy
 class SetOfProdStatController {  
    async add_new_set(req, res, next) {
       const { id, day, buy } = req.body;
@@ -20,7 +21,6 @@ class SetOfProdStatController {
          catch (err) {
             res.status(401).send({
                "msg": 0, 'set-of-prod-stat': null
-               // "error": { "code": 401, "message": "Registration failed." }
             });
          }
       }
@@ -32,13 +32,11 @@ class SetOfProdStatController {
       if (setOfProdStats) {
          res.send({
             "msg": 1, 'set_of_prod_stats': setOfProdStats
-            // "error": { "code": 409, "message": "Username already exists" }
          });
       }
       else {
          res.status(401).send({
             "msg": 0, 'set_of_prod_stats': null
-            // "error": { "code": 401, "message": "Registration failed." }
          });
       }
    }

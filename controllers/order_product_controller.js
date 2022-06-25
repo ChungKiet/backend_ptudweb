@@ -1,55 +1,22 @@
-const mongoose = require('mongoose');
-const validator = require('validator');
+const OrderProduct = require("../models/order_product");
+class OrderProdController {  
 
-const orderProSchema = new mongoose.Schema({
-   id: {
-      type: String,
-      required: true,
-   },
-   idPro: {
-      type: String,
-      required: true,
-   },
-   amount: {
-      type: Number,
-      required: true,
-   },
-   currPrice: {
-      type: Number,
-      required: true,
-   },
-});
-
-const OrderProduct = mongoose.model('OrderProduct', orderProSchema);
-
-module.exports = OrderProduct;
-
-const VaccineHis = require("../models/vaccine_history");
-const User = require("../models/user");
-
-class VaccineHisController {  
-
-   // [POST] /users/register --> Create new user (call for manager)
-
-   // find user by req.id --> if not exists --> pass else --> check type of vaccine in range of value --> oke? add
-   async add_history(req, res, next) {
-      const { id, name, password, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
+   async add_order_prod(req, res, next) {
+      const { id_order, id_sets, amounts, curr_prices } = req.body;
       // console.log({ name, gender, birthday, email, username, password });
-      const userExists = await User.findOne({ username });
-      if (userExists) {
+      const orderProd = await OrderProduct.findOne({ id_order, id_sets, amounts, curr_prices});
+      if (orderProd) {
             res.send({
-               "msg": 3, 'user': null
-               // "error": { "code": 409, "message": "Username already exists" }
+               "msg": 3, 'order_prod': orderProd
             });
          }
          try {
-            const user = await VaccineHis.create({id, name, password, birthday, address, email, phone, min_exchange, quarantine_state, updated_state });
-            res.send({ "msg": 1, 'user': user });
+            const orderProd = await OrderProduct.create({ id_order, id_sets, amounts, curr_prices});
+            res.send({ "msg": 1, 'order_prod': orderProd });
          }
          catch (err) {
             res.status(401).send({
-               "msg": 0, 'user': null
-               // "error": { "code": 401, "message": "Registration failed." }
+               "msg": 0, 'order_prod': orderProd
             });
          }
    }
@@ -57,20 +24,65 @@ class VaccineHisController {
    // update
    // update add new product in a record
    async update_order_pro(req, res, next){
-
+      const { id_order, id_sets, amounts, curr_prices } = req.body;
+      const orderProd = await OrderProduct.findOne({id_order: id_order});
+      if (!orderProd) {
+         res.status(404).send({
+            "msg": 0, 'result': "Order product not found"
+         });
+      }
+      try {
+         const orderProd = await OrderProduct.updateOne({id_order: id_order},{ id_sets, amounts, curr_prices});
+         res.send({ "msg": 1, 'order_prod': orderProd });
+      }
+      catch (err) {
+         res.status(401).send({
+            "msg": 0, 'order_prod': orderProd
+         });
+      }
    }
 
    // view by bill_id
    // bill detail --> all product of that bill
-   async view_by_bill_id(req, res, next){
-
+   async view_by_user_id(req, res, next){
+      const { id_order, id_sets, amounts, curr_prices } = req.body;
+      const orderProd = await OrderProduct.findOne({id_order: id_order});
+      if (!orderProd) {
+         res.status(404).send({
+            "msg": 0, 'result': "Order product not found"
+         });
+      }
+      try {
+         const orderProd = await OrderProduct.updateOne({id_order: id_order},{ id_sets, amounts, curr_prices});
+         res.send({ "msg": 1, 'order_prod': orderProd });
+      }
+      catch (err) {
+         res.status(401).send({
+            "msg": 0, 'order_prod': orderProd
+         });
+      }
    }
 
    // delete when cart of user is null / empty
    async delete_order_pro(req, res, next){
-      
+      const { id_user } = req.body;
+      const orderProd = await OrderProduct.findOne({id_user: id_user});
+      if (!orderProd) {
+         res.status(404).send({
+            "msg": 0, 'result': "Order product not found"
+         });
+      }
+      try {
+         const orderProd = await OrderProduct.deleteOne({id_user: id_user});
+         res.send({ "msg": 1, 'order_prod': orderProd });
+      }
+      catch (err) {
+         res.status(401).send({
+            "msg": 0, 'order_prod': orderProd
+         });
+      }
    }
 
 }
 
-module.exports = VaccineHisController
+module.exports = OrderProdController

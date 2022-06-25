@@ -1,17 +1,12 @@
 const QuarantineLoc = mongoose.model('QuarantineLoc', quarantineLocationSChema);
 class QuarantineLocController {  
 
-   // [POST] /users/register --> Create new user (call for manager)
-
-   // find user by req.id --> if not exists --> pass else --> check type of vaccine in range of value --> oke? add
    async add_history(req, res, next) {
       const { id, name, address, capacity, amount, state } = req.body;
-      // console.log({ name, gender, birthday, email, username, password });
       const quarantine_loc = await QuarantineLoc.findOne({ id: id });
       if (quarantine_loc) {
             res.send({
                "msg": 3, 'quarantine_loc': null
-               // "error": { "code": 409, "message": "Username already exists" }
             });
          }
          try {
@@ -21,7 +16,6 @@ class QuarantineLocController {
          catch (err) {
             res.status(401).send({
                "msg": 0, 'quarantine_loc': null
-               // "error": { "code": 401, "message": "Registration failed." }
             });
          }
    }
@@ -49,10 +43,7 @@ class QuarantineLocController {
          });
       }
    }
-   // check the capacity of that loc
-   // if is not full --> update else no
-   
-   // view loc
+
    async view_loc(req, res, next) {
       const id = req.body.id;
       try {

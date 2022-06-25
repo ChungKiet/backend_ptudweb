@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 
 const productStatSchema = new mongoose.Schema({
-   id: {
+   id_prod: {
       type: String,
       required: true,
    },

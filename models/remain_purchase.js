@@ -9,11 +9,9 @@ const remainPurchaseSchema = new mongoose.Schema({
       type: String,
       required: true,
    },
-   id_prods: {
-      type: Array, of: String, require: true
-   },
-   remains: {
-      type: Array, of: Number, require: true
+   remain: {
+      type: Number,
+      required: true,
    },
 });
 

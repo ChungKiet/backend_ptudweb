@@ -1,39 +1,5 @@
-// const mongoose = require('mongoose');
-// const validator = require('validator');
-
+const PriceHis = require("../models/price_pro_history");
 const Product = require("../models/product");
-
-// const prodSchema = new mongoose.Schema({
-//    id: {
-//       type: String,
-//       required: true,
-//    },
-//    name: {
-//       type: String,
-//       required: true,
-//    },
-//    buyLimit: {
-//       type: Number,
-//       required: true,
-//       default: 1,
-//    },
-//    price: {
-//       type: Number,
-//       required: true,
-//       default: 0,
-//    },
-//    images: {
-//       type: Array, of: String, required: false
-//    },
-// });
-
-// const Product = mongoose.model('Product', prodSchema);
-
-// module.exports = Product;
-
-// const VaccineHis = require("../models/vaccine_history");
-// const User = require("../models/user");
-// const Product = require("../models/product");
 
 class ProdController {  
 
@@ -51,6 +17,7 @@ class ProdController {
          }
          try {
             const prod = await Product.create({ id, name, buy_limit, price, images });
+            const prodPriceHis = await PriceHis.create({id, $push: { prices: price }, $push: { start_times: Date.now() }})
             res.send({ "msg": 1, 'product': prod });
          }
          catch (err) {
@@ -65,10 +32,18 @@ class ProdController {
    async update_product(req, res, next) {
       const { id, name, buy_limit, price, images } = req.body;
       try {
-         const prod = await Product.updateOne({ id: id}, {
+         const prod = await Product.findOne({
+            id: id
+         });
+         if (prod && prod.price != price){
+            const prodPriceHis = PriceHis.updateOne({
+               id_prod: id
+            }, {$push: { prices: price }, $push: { start_times: Date.now() }});
+         }
+         const prodUpdated = await Product.updateOne({ id: id}, {
             name, buy_limit, price, images
          });
-         if (prod.modifiedCount === 1) {
+         if (prodUpdated.modifiedCount === 1) {
             res.json({ "result": 1, "message": "Update product success" });
          }
          else {

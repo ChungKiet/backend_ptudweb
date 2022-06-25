@@ -1,68 +1,109 @@
-const mongoose = require('mongoose');
-const validator = require('validator');
+const PaymentAccount = require("../models/payment_account");
 
-const paymentAccSchema = new mongoose.Schema({
-   name: {
-      type: String,
-      required: true,
-   },
-   amount: {
-      type: Number,
-      required: true,
-   },
-});
+class PaymentAccController {  
 
-const PaymentAccount = mongoose.model('PaymentAccount', paymentAccSchema);
-
-module.exports = PaymentAccount;
-
-const VaccineHis = require("../models/vaccine_history");
-const User = require("../models/user");
-
-class VaccineHisController {  
-
-   // [POST] /users/register --> Create new user (call for manager)
-
-   // find user by req.id --> if not exists --> pass else --> check type of vaccine in range of value --> oke? add
-   async add_history(req, res, next) {
-      const { id, name, password, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
+   async add_new_acc(req, res, next) {
+      const { username, password, amount } = req.body;
       // console.log({ name, gender, birthday, email, username, password });
-      const userExists = await User.findOne({ username });
-      if (userExists) {
+      const payAcc = await PaymentAccount.findOne({ username });
+      if (payAcc) {
             res.send({
-               "msg": 3, 'user': null
-               // "error": { "code": 409, "message": "Username already exists" }
+               "msg": 3, 'payment_account': payAcc
             });
          }
          try {
-            const user = await VaccineHis.create({id, name, password, birthday, address, email, phone, min_exchange, quarantine_state, updated_state });
-            res.send({ "msg": 1, 'user': user });
+            const payAcc = await PaymentAccount.create({ username, password, amount });
+            res.send({ "msg": 1, 'payment_account': payAcc });
          }
          catch (err) {
             res.status(401).send({
-               "msg": 0, 'user': null
-               // "error": { "code": 401, "message": "Registration failed." }
+               "msg": 0, 'payment_account': payAcc
             });
          }
+   }
+
+   async login(req, res, next){
+      const { username, password} = req.body
+      const user = await PaymentAccount.findOne({username: username})
+      if (!user) {
+         res.send({
+            "isLogin": 2, "user": null
+         });
+      }
+      else if (user.password === password) {
+         res.send({
+            "isLogin": 1, "user": user
+         });
+      }
+      else {
+         res.send({
+            "isLogin": 3, "user": null
+         });
+      }
    }
 
    // update
    // check amount is gt 0 and update
    async update_payment(req, res, next){
-
+      const { username, password, amount } = req.body;
+      try {
+         const user = await PaymentAccount.updateOne({ username: username}, {
+            password, amount
+         });
+         if (user.modifiedCount === 1) {
+            res.json({ "result": 1, "message": "Payment update Success" });
+         }
+         else {
+            res.json({ "result": 0, "message": "Payment update Failed" });
+         }
+      }
+      catch (err) {
+         res.status(500).send({
+            "error": {
+               "result": 0,
+               "code": 500,
+               "message": "Server internal error. Payment update failed."
+            }
+         });
+      }
    }
 
    // view
    // view name and amount
    async view_one_acc(req, res, next){
-
+      const id = req.body.id;
+      const user = await PaymentAccount.findOne({
+         id: id
+      }); // ignore this info
+      if (user) {
+         res.json({"username": user.username, "amount": user.amount});
+      }
+      else {
+         res.status(404).send({
+            "error": {
+               "code": 404,
+               "message": " Payment Account Not Found"
+            }
+         });
+      }
    }
 
    // view all (limit per page)
    async view_all(req, res, next){
-      
+      const users = await PaymentAccount.find({}); // ignore this info
+      if (users) {
+         res.json(users);
+      }
+      else {
+         res.status(404).send({
+            "error": {
+               "code": 404,
+               "message": " User Not Found"
+            }
+         });
+      }
    }
 
 }
 
-module.exports = VaccineHisController
+module.exports = PaymentAccController

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 
 const vaccineHistorySchema = new mongoose.Schema({
-   id: {
+   id_user: {
       type: String,
       required: true,
    },

@@ -4,7 +4,6 @@ const Product = require("../models/product");
 class SetOfProdController {  
    async add_new_prod(req, res, next) {
       const { id, name, image, id_prods, buy_limit, buy_limit_prods, price, expire_at } = req.body;
-      // console.log({ name, gender, birthday, email, username, password });
       const setOfProds = await SetOfProduct.findOne({ id: id });
       if (setOfProds) {
             res.send({

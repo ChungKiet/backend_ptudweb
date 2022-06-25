@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 
 const orderSchema = new mongoose.Schema({
-   idUser: {
+   id_user: {
       type: String,
       required: true,
    },
-   idOrder: {
+   id_order: {
       type: String,
       required: true,
    },
@@ -15,7 +15,7 @@ const orderSchema = new mongoose.Schema({
       required: true,
       default: 1,
    },
-   createdAt: {
+   created_at: {
       type: Date, required: true, default: Date.now()
    },
    state: {

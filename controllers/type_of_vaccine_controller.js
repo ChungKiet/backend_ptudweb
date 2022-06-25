@@ -5,12 +5,10 @@ class TypeOfVaccineController {
    // [POST] /vaccine-type/add-new-type
    async add_new_type(req, res, next) {
       const { id, name } = req.body;
-      // console.log({ name, gender, birthday, email, username, password });
       const vaccineType = await TypeOfVaccine.findOne({ id: id });
       if (vaccineType) {
          res.send({
             "msg": 3, 'vaccine': null
-            // "error": { "code": 409, "message": "Username already exists" }
          });
       }
       try {
@@ -25,8 +23,7 @@ class TypeOfVaccineController {
    }
 
    // [GET] /vaccine-type/get-all-type
-   async add_new_type(req, res, next) {
-      const { id, name } = req.body;
+   async get_all_type(req, res, next) {
       // console.log({ name, gender, birthday, email, username, password });
       const vaccineTypes = await TypeOfVaccine.find({});
 

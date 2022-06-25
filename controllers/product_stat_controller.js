@@ -5,11 +5,11 @@ class ProdStatController {
 
    // find user by req.id --> if not exists --> pass else --> check type of vaccine in range of value --> oke? add
    async add_history(req, res, next) {
-      const { id, day, buy } = req.body;
+      const { id_prod, day, buy } = req.body;
       // console.log({ name, gender, birthday, email, username, password });
       const product_stat = await ProductStat.findOne({ id: id });
       if (product_stat) {
-         const product_stat = ProductStat.updateOne({id: id, day: day}, {buy: setOfProdStat?.buy + buy})
+         const product_stat = ProductStat.updateOne({id_prod: id_prod, day: day}, {buy: setOfProdStat?.buy + buy})
          res.send({
             "msg": 3, 'product_stat': product_stat
             // "error": { "code": 409, "message": "Username already exists" }
@@ -17,7 +17,7 @@ class ProdStatController {
       }
       else{
          try {
-            const product_stat = await ProductStat.create({ id, day, buy });
+            const product_stat = await ProductStat.create({ id_prod, day, buy });
             res.send({ "msg": 1, 'product_stat': product_stat });
          }
          catch (err) {

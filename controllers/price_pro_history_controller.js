@@ -1,74 +1,35 @@
-const mongoose = require('mongoose');
-const validator = require('validator');
+const PriceHis = require("../models/price_pro_history");
 
-const priceHisSChema = new mongoose.Schema({
-   id: {
-      type: String,
-      required: true,
-   },
-   idPrice: {
-      type: String,
-      required: true,
-   },
-   startTime: {
-      type: Date, required: true, default: Date.now()
-   },
-   price: {
-      type: Number,
-      required: true
-   },
-   state: {
-      type: String,
-      required: true
-   },
-});
-
-const PriceHis = mongoose.model('PriceHis', priceHisSChema);
-
-module.exports = PriceHis;
-
-const VaccineHis = require("../models/vaccine_history");
-const User = require("../models/user");
-
-class VaccineHisController {  
+class PriceHisController {  
 
    // [POST] /users/register --> Create new user (call for manager)
-
-   // find user by req.id --> if not exists --> pass else --> check type of vaccine in range of value --> oke? add
-   async add_history(req, res, next) {
-      const { id, name, password, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
-      // console.log({ name, gender, birthday, email, username, password });
-      const userExists = await User.findOne({ username });
-      if (userExists) {
-            res.send({
-               "msg": 3, 'user': null
-               // "error": { "code": 409, "message": "Username already exists" }
-            });
-         }
-         try {
-            const user = await VaccineHis.create({id, name, password, birthday, address, email, phone, min_exchange, quarantine_state, updated_state });
-            res.send({ "msg": 1, 'user': user });
-         }
-         catch (err) {
-            res.status(401).send({
-               "msg": 0, 'user': null
-               // "error": { "code": 401, "message": "Registration failed." }
-            });
-         }
-   }
-
-   // view 
-   // view all history of a product
    async view_price_prod(req, res, next){
-
+      const { id_prod } = req.body;
+      try {
+         const prodPriceHis = await PriceHis.findOne({
+            id_prod: id_prod
+         }); // ignore this info
+         if (prodPriceHis) {
+            res.json({"msg": 1, "price_history": prodPriceHis});
+         }
+         else {
+            res.status(404).send({
+               "error": {
+                  "code": 404,
+                  "message": "Product not found"
+               }
+            });
+         }
+      } catch (error) {
+         res.status(500).send({
+            "error": {
+               "result": 0,
+               "code": 500,
+               "message": "Internal server error."
+            }
+         });
+      }
    }
-
-   // view all
-   // short info of list of history (can click in whatever they want)
-   async view_all_his(req, res, next){
-      
-   }
-
 }
 
-module.exports = VaccineHisController
+module.exports = PriceHisController
