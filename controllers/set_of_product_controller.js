@@ -21,7 +21,7 @@ class SetOfProdController {
          }
    }
 
-   async update_product(req, res, next) {
+   async update_prod(req, res, next) {
       const {id, name, image, id_prods, buy_limit, buy_limit_prods,  price, expire_at} = req.body;
       try {
          const setOfProds = await SetOfProduct.updateOne({ id: id}, {
@@ -45,7 +45,7 @@ class SetOfProdController {
       }
    }
 
-   async view_all_product(req, res, next) {
+   async view_all_prod(req, res, next) {
       try {
          const allOfSetOfProds = await SetOfProduct.find({}); // ignore this info
          let result = []

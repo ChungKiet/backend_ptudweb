@@ -1,7 +1,7 @@
 const QuarantineLoc = mongoose.model('QuarantineLoc', quarantineLocationSChema);
 class QuarantineLocController {  
 
-   async add_history(req, res, next) {
+   async add_new_loc(req, res, next) {
       const { id, name, address, capacity, amount, state } = req.body;
       const quarantine_loc = await QuarantineLoc.findOne({ id: id });
       if (quarantine_loc) {

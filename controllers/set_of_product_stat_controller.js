@@ -10,7 +10,6 @@ class SetOfProdStatController {
          const setOfProdStat = SetOfProdStat.updateOne({id: id, day: day}, {buy: setOfProdStat?.buy + buy})
          res.send({
             "msg": 3, 'set_of_prod_stats': setOfProdStat
-            // "error": { "code": 409, "message": "Username already exists" }
          });
       }
       else {

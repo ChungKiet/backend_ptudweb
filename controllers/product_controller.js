@@ -29,7 +29,7 @@ class ProdController {
    }
 
    // update --> update image, update or the param
-   async update_product(req, res, next) {
+   async update_prod(req, res, next) {
       const { id, name, buy_limit, price, images } = req.body;
       try {
          const prod = await Product.findOne({

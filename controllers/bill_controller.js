@@ -2,7 +2,7 @@ const Bill = require("../models/bill");
 
 class BillController {  
 
-   async add_history(req, res, next) {
+   async add_bill(req, res, next) {
       const { id, id_buyer, amount, state } = req.body;
       const bill = await Bill.findOne({ id: id });
       if (bill) {
@@ -22,16 +22,16 @@ class BillController {
    }
 
    // update view
-   async add_history(req, res, next) {
+   async update_bill(req, res, next) {
       const { id, id_buyer, amount, state } = req.body;
       const bill = await Bill.findOne({ id: id });
-      if (bill) {
+      if (!bill) {
          res.send({
             "msg": 3, 'bill': null
          });
       }
       try {
-         const bill = await Bill.create({ id, id_buyer, amount, state });
+         const bill = await Bill.updateOne({ id: id},{ id_buyer, amount, state });
          res.send({ "msg": 1, 'bill': bill });
       }
       catch (err) {

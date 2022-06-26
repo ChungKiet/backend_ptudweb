@@ -1,6 +1,5 @@
 const RemainPurchase = require("../models/remain_purchase");
 class RemainPurchaseController {  
-
    async add_new_remain(req, res, next) {
       const { id_user, id_set, id_prods, remains } = req.body;
       const remainPur = await RemainPurchase.findOne({ id_user: id_user, id_set: id_set});

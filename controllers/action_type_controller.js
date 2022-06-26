@@ -1,6 +1,6 @@
 const ActionType = require("../models/action_type");
 
-class AccTypeController {  
+class ActTypeController {  
 
    async add_history(req, res, next) {
       const { id, name } = req.body;
@@ -22,7 +22,7 @@ class AccTypeController {
    }
    
    // delete action
-   async add_history(req, res, next) {
+   async delete_his(req, res, next) {
       const { id } = req.body;
       try {
          await ActionType.deleteOne({id: id });
@@ -36,4 +36,4 @@ class AccTypeController {
    }
 }
 
-module.exports = AccTypeController
+module.exports = ActTypeController
