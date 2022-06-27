@@ -51,8 +51,7 @@ class UserController {
    }
 
    // [GET] /users/get-profile
-   // async
-   user_profile(req, res, next) {
+   async user_profile(req, res, next) {
       const id = req.query.id;
       const user = await User.findOne({
          id: id
