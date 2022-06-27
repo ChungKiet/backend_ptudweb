@@ -3,10 +3,7 @@ class HomeController {
 
    // [Get] /
    index(req, res) {
-       res.status(200).json({
-           "website": "Xin chào đến với ..., \
-                   trang web quản lý người nhiễm covid!"
-       });
+    res.render('index', {author: 'Nhom11'});
    }
 
    not_found(req, res) {
