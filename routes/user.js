@@ -3,7 +3,7 @@ const route = express.Router();
 
 const UserController = require('../controllers/user_controller')
 
-route.post('/login', UserController.get_acc_state);
+route.post('/login', UserController.login);
 
 route.get('/get-profile', UserController.user_profile);
 

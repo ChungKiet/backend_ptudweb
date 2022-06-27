@@ -59,4 +59,4 @@ class MovHisController {
 
 }
 
-module.exports = MovHisController
+module.exports = new MovHisController

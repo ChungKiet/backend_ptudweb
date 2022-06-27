@@ -41,4 +41,4 @@ class SetOfProdStatController {
    }
 }
 
-module.exports = SetOfProdStatController
+module.exports = new SetOfProdStatController

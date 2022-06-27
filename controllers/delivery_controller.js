@@ -57,4 +57,4 @@ class DeliveryController {
 
 }
 
-module.exports = DeliveryController
+module.exports = new DeliveryController

@@ -1,4 +1,4 @@
-const QuarantineLoc = mongoose.model('QuarantineLoc', quarantineLocationSChema);
+const QuarantineLoc = require('../models/quarantine_location')
 class QuarantineLocController {  
 
    async add_new_loc(req, res, next) {
@@ -98,4 +98,4 @@ class QuarantineLocController {
    }
 }
 
-module.exports = QuarantineLocController
+module.exports = new QuarantineLocController

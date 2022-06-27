@@ -106,4 +106,4 @@ class PaymentAccController {
 
 }
 
-module.exports = PaymentAccController
+module.exports = new PaymentAccController

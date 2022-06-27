@@ -38,4 +38,4 @@ class TypeOfVaccineController {
    }
 }
 
-module.exports = TypeOfVaccineController
+module.exports = new TypeOfVaccineController

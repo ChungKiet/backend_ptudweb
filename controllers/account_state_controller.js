@@ -74,4 +74,4 @@ class AccStateController {
    }
 }
 
-module.exports = AccStateController
+module.exports = new AccStateController

@@ -30,4 +30,4 @@ class ActiveHisController {
 
 }
 
-module.exports = ActiveHisController
+module.exports = new ActiveHisController

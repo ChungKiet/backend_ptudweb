@@ -58,4 +58,4 @@ class CartController {
    // only edit on cache, when payment or logout --> insert in DB
 }
 
-module.exports = CartController
+module.exports = new CartController

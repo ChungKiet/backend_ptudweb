@@ -39,4 +39,4 @@ class RemainPurchaseController {
    }
 }
 
-module.exports = RemainPurchaseController
+module.exports = new RemainPurchaseController

@@ -50,4 +50,4 @@ class VaccineHisController {
 
 }
 
-module.exports = VaccineHisController
+module.exports = new VaccineHisController

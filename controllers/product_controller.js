@@ -126,4 +126,4 @@ class ProdController {
    }
 }
 
-module.exports = ProdController
+module.exports = new ProdController

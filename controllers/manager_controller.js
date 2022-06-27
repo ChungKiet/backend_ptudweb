@@ -42,4 +42,4 @@ class ManagerController {
 
 }
 
-module.exports = ManagerController
+module.exports = new ManagerController

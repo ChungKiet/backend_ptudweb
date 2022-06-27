@@ -54,4 +54,4 @@ class ProdStatController {
 
 }
 
-module.exports = ProdStatController
+module.exports = new ProdStatController

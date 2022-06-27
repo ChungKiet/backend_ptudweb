@@ -1,10 +1,10 @@
 const express = require('express');
 const route = express.Router();
 
-const homeController = require('../controllers/HomeController');
+const HomeController = require('../controllers/home_controller');
 
-route.get('/:slug', homeController.not_found);
+route.get('/:slug', HomeController.not_found);
 
-route.get('/', homeController.index);
+route.get('/', HomeController.index);
 
 module.exports = route

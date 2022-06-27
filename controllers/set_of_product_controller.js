@@ -124,4 +124,4 @@ class SetOfProdController {
    }
 }
 
-module.exports = SetOfProdController
+module.exports = new SetOfProdController

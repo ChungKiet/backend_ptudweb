@@ -47,4 +47,4 @@ class PaymentHisController {
    }
 }
 
-module.exports = PaymentHisController
+module.exports = new PaymentHisController

@@ -85,4 +85,4 @@ class OrderProdController {
 
 }
 
-module.exports = OrderProdController
+module.exports = new OrderProdController

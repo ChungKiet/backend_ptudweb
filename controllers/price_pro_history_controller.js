@@ -32,4 +32,4 @@ class PriceHisController {
    }
 }
 
-module.exports = PriceHisController
+module.exports = new PriceHisController

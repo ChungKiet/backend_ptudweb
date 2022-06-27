@@ -69,4 +69,4 @@ class BillController {
    }
 }
 
-module.exports = BillController
+module.exports = new BillController

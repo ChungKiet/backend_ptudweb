@@ -36,4 +36,4 @@ class ActTypeController {
    }
 }
 
-module.exports = ActTypeController
+module.exports = new ActTypeController
