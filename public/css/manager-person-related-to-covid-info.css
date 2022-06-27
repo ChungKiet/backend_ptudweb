@@ -1,0 +1,178 @@
+body{
+    background-color: #ABD399;
+    margin:0;
+    padding:0;
+}
+.container-fluid{
+    padding:0;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+header{
+    background-color:#609B53;
+    height: 50px;
+    padding-left: 100px;
+    width: 100%;
+}
+header h1{
+    line-height: 45px;
+    color:white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color:gray;
+    text-shadow: 2px 2px 2px #000;
+}
+#toolbar{
+    line-height: 45px;
+    padding: 0 10%;
+}
+
+#profile-area{
+    /* position: absolute; */
+    right: 20px;
+    gap:10px;
+    /* display:flex;
+    flex-direction: row; */
+    line-height:45px ;
+    
+     
+}
+
+.main{
+    background-color:#ABD399;
+    display:flex;
+    flex-direction: row;
+    height:100vh;
+}
+aside{
+    flex-basis: 15%;
+    padding:20px;
+}
+#content{
+    background-color:white;
+    height:fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#add-person-btn{
+    background-color: #ABD399;
+    align-self: flex-end;
+    margin: 20px;
+}
+
+
+#username{
+    color: white;
+}
+
+#toolbar a{
+    text-decoration: None;
+    color: white;
+    font-size: 120%;
+}
+
+#satistic-pop-up, #account-menu-pop-up{
+    background-color: #609B53;
+    border: none;
+    font-size: 120%;
+}
+
+.dropbtn {
+    background-color: #609B53;
+    color: white;
+    border: none;
+    height: 100%;
+}
+  
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+  
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    width: 100%;
+}
+.dropdown{
+    background-image: none;
+}
+.dropdown-content a:hover {background-color: #ddd;}
+  
+.dropdown:hover .dropdown-content {display: block;}
+  
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+#btn-filter-submit{
+    padding: 0 30%;
+}
+
+#content h3{
+    padding: 30px;
+    color: #609B53;
+    
+}
+
+#person-avatar{
+    max-width: 200px;
+    max-height: 200px;
+    align-self: center;
+    background-color: #439b19;
+    margin-bottom: 50px;
+}
+.info-block{
+    padding-bottom: 40px;
+}
+
+.input-box{
+    width: 100%;
+    height: 30px;
+    border: solid lightgray;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+
+.three-row-input-box{
+    border: solid lightgray;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+label{
+    padding-right: 30px;
+}
+
+#nationality, #year-born{
+    width: 100%;
+}
+
+.group-answer{
+    margin-bottom: 10px;
+}
+
+#save-info-btn{
+    width: fit-content;
+    background-color: #609B53;
+    align-self: center;
+    margin-bottom: 150px;
+
+}
+
+b{
+    color: red;
+}
+
+
+
+

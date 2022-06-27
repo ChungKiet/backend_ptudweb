@@ -1,0 +1,76 @@
+body{
+    background-color: #ffffff;
+    margin:0;
+    padding:0;
+}
+.container-fluid    {
+    padding:0;
+    height:100vh;
+}
+
+header{
+    background-color:#609B53;
+    height: 50px;
+    padding-left: 100px;
+    width: 100%;
+}
+header h1{
+    line-height: 45px;
+    color:white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color:gray;
+    text-shadow: 2px 2px 2px #000;
+}
+
+#profile-area{
+    position: absolute;
+    right: 20px;
+    gap:10px;
+    align-items: center;
+    display:flex;
+    flex-direction: row;
+    height:50px;
+}
+#username{
+    line-height: 50px;
+}
+
+#money-icon{
+    margin: 5em;
+}
+
+.money{
+    border: 1px solid #609B53;
+    padding: 1em;
+    border-radius: 10px;
+}
+
+.money:active{
+    background-color: #ABD399;
+}
+
+button{
+    margin: 0 auto;
+    width: 20%
+    !important;
+    background-color: #609B53
+    !important;
+    border-radius: 10px
+    !important;
+}
+
+#profile-area{
+    position: absolute;
+    right: 80px;
+    gap:10px;
+    align-items: center;
+    display:flex;
+    flex-direction: row;
+}
+#username{
+    line-height: 50px;
+}
+#home{
+    line-height: 50px;
+}
+

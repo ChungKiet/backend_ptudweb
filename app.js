@@ -1,8 +1,8 @@
 const express = require('express');
 const expressHbs = require('express-handlebars');
 const cors = require("cors");
-const route = require('../routes');
-const db = require('../db/mongodb');
+const route = require('./routes');
+const db = require('./db/mongodb');
 const app = express();
 const path = require('path');
 const port = 8000;
@@ -19,7 +19,7 @@ const hbs = expressHbs.create({
 
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
-app.set("views",path.join(__dirname, 'views/authentication'))
+app.set("views",path.join(__dirname, 'views/home'))
 app.use(express.static(__dirname + '/public'));
 
 // app.engine("html", require("ejs").renderFile);
