@@ -3,7 +3,10 @@ class HomeController {
 
    // [Get] /
    index(req, res) {
-    res.render('index', {author: 'Nhom11'});
+    res.status(200).render('index', {
+        style:'user-login.css',
+        title:'Home'
+    });
    }
 
    not_found(req, res) {

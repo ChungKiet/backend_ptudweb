@@ -19,7 +19,7 @@ const hbs = expressHbs.create({
 
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
-app.set("views",path.join(__dirname, 'views/home'))
+app.set("views",path.join(__dirname, 'views'))
 app.use(express.static(__dirname + '/public'));
 
 // app.engine("html", require("ejs").renderFile);
