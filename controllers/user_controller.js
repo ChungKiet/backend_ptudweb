@@ -57,7 +57,7 @@ class UserController {
          id: id
       }); // ignore this info
       if (user) {
-         res.json(user);
+         res.render('user-profile',{user, author:'Nhom 11'});
       }
       else {
          res.status(404).send({
