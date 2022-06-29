@@ -64,8 +64,8 @@ class UserController {
       if (user) {
          res.status(200).render('user/user-profile',{
             user: user,
-            // vaccine_history: vaccineHis,
-            // movement_history: mov_his, 
+            vaccine_history: vaccineHis,
+            movement_history: mov_his, 
             layout:'layout1.hbs',
             style:'user-profile.css',
             title:'Profile'

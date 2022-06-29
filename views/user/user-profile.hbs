@@ -5,8 +5,11 @@
             <h4 id="home" class="px-5"><a href="user-product.html"
                     class="text-decoration-none text-white text-center">Trang chủ</a></h4>
             <div id="profile-area" class="">
-
+                {{#each user}}
+                {{#if name}}
                 <p id="username">{{name}}</p>
+                {{/if}}
+                {{/each}}
                 <div class="pb-3">
                     <i class="fa-solid fa-user "></i>
                     <div class="btn-group">
@@ -36,11 +39,17 @@
                 <div id="user-info" class="container d-flex flex-column mx-5 px-5">
                     <p>Họ và tên: </p>
                     {{#each user}}
+                    {{#if name}}
                     <input id="name" class="w-200" value={{name}} readonly>
-                    {{/each}}
                     <p>Ngày sinh: </p>
                     <input id="dob" class="w-100" value={{birthday}} readonly>
                     <p>Giới tính: <span id="gender">Nam</span></p>
+                    <script>
+                        function log_console() {
+                            console.log
+                                ({{ this}});
+                        }
+                    </script>
                     <!-- <div class="form-check">
                     <input class="form-check-input" type="radio" name="male" id="male" value="Male">
                     <label class="form-check-label" for="male">Nam</label>
@@ -52,7 +61,9 @@
                   </div> -->
                     <p>Số điện thoại: </p>
                     <input id="dob" class="w-100" value={{phone}} readonly>
-                    <a class="btn btn-success my-3 w-25" id="btn-edit-info" href="user-edit-profile.html">Chỉnh sửa</a>
+                    <a class="btn btn-success my-3 w-25" id="btn-edit-info" onclick="log_console">Chỉnh sửa</a>
+                    {{/if}}
+                    {{/each}}
                 </div>
                 <div class="container d-flex flex-row justify-content-center mx-5">
                     <img style="width:200px; height:200px" src="/images/QR.png" alt="QR code">
