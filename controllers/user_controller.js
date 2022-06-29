@@ -1,4 +1,6 @@
+const MovementHis = require("../models/movement_history");
 const User = require("../models/user");
+const VaccineHis = require("../models/vaccine_history");
 
 class UserController {  
 
@@ -51,15 +53,19 @@ class UserController {
    }
 
    // [GET] /users/get-profile
-   // async
-   user_profile(req, res, next) {
+   async user_profile(req, res, next) {
       const id = req.query.id;
       const user = await User.findOne({
-         id: id
+         id: 'F1_001'
       }); // ignore this info
-      if (true) {
+      const vaccineHis = await VaccineHis.find({ id_user: 'F1_001' }); // sample id: 62bb2a31ed6d8232fda52cbc
+      const mov_his = await MovementHis.findOne({ id_user: 'F1_001'});
+      console.log(user)
+      if (user) {
          res.status(200).render('user/user-profile',{
-            user,
+            user: user,
+            // vaccine_history: vaccineHis,
+            // movement_history: mov_his, 
             layout:'layout1.hbs',
             style:'user-profile.css',
             title:'Profile'
