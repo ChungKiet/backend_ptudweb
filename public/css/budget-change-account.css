@@ -1,0 +1,77 @@
+body{
+    background-color: #ffffff;
+    margin:0;
+    padding:0;
+}
+.container-fluid    {
+    padding:0;
+    height:100vh;
+}
+
+header{
+    background-color:#609B53;
+    height: 50px;
+    padding-left: 100px;
+    width: 100%;
+}
+header h1{
+    line-height: 45px;
+    color:white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color:gray;
+    text-shadow: 2px 2px 2px #000;
+}
+
+
+#username{
+    line-height: 50px;
+}
+.container{
+    display: block;
+}
+
+#submit{
+    color: white;
+    background-color: #609B53;
+    width: 15%;
+    border-radius: 10px;
+}
+
+input{
+    border-radius: 10px
+    !important;
+
+}
+#money-icon{
+    margin: 5em;
+}
+
+#forgot-pass{
+   color:blue;
+}
+
+#profile-area{
+    position: absolute;
+    right: 80px;
+    gap:10px;
+    align-items: center;
+    display:flex;
+    flex-direction: row;
+}
+#username{
+    line-height: 50px;
+}
+#home{
+    line-height: 50px;
+}
+
+a{
+    text-decoration: none;
+    color: #609B53;
+}
+
+img{
+    width: 10em;
+    margin: 0;
+    padding: 0;
+}

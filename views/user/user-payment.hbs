@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/user-payment.css">
+    
+    <title>Thanh toán</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <header class="d-flex flex-row shadow">
+            <h1>COVID</h1>
+            <h4 id="home" class="px-5"><a href="/user-product.html" class="text-decoration-none text-white text-center">Trang chủ</a></h4>
+            <div id="profile-area" class="">
+                <p id="username">Nguyễn Văn A</p>
+                <div class="pb-3">
+                    <i class="fa-solid fa-user "></i>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-infor dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="user-order.html">Đơn mua</a></li>
+                          <li><a class="dropdown-item" href="user-profile.html">Hồ sơ cá nhân</a></li>
+                          <li><a class="dropdown-item" href="budget.html">Tài khoản thanh toán</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="index.html">Đăng xuất</a></li>
+                        </ul>
+                      </div>
+                </div>
+            </div>
+        </header>
+        <div class="main">
+          <h1 class="mx-5 my-2">Giỏ hàng</h1>
+          <div class="row mx-5 mt-4 border border-dark border-1">
+            <div class="col-10 py-2 px-5">
+                <h5>Địa chỉ nhận hàng</h5>
+                <p>Phường An Lạc, Quận Tân Bình, Thành phố Hồ Chí Minh</p>
+                <p>Thời gian giao hàng: 30/4-6/5</p>
+            </div>
+            <div class="col-2 px-5 d-flex justify-content-center align-items-center">
+                <a href="#" class="text-decoration-none text-muted">Thay đổi</a>
+            </div>
+        </div>
+          <div class="row mx-5 mt-4">
+              <p class="col-6 border border-dark border-1 py-2 text-center">Sản phẩm</p>
+              <p class="col-1 border border-dark border-1 py-2 text-center">Số lượng</p>
+              <p class="col-2 border border-dark border-1 py-2 text-center">Đơn giá</p>
+              <p class="col-2 border border-dark border-1 py-2 text-center">Thành tiền</p>
+              <p class="col-1 border border-dark border-1 py-2 text-center"></p>
+          </div>
+           <div class="row mx-5">
+                <p class="col-6 border border-dark border-1 py-4 px-5 text-success"><b>Kem đánh răng</b></p>
+                <p class="col-1 border border-dark border-1 py-4 text-center">1</p>
+                <p class="col-2 border border-dark border-1 py-4 text-center">12 000</p>
+                <p class="col-2 border border-dark border-1 py-4 text-center">12000</p>
+                <p onclick="alert('Xóa sản phẩm')"class="col-1 border border-dark border-1 py-4 text-danger text-center" >Xóa</p>
+            </div>
+            <div class="row mx-5">
+                <p class="col-6 border border-dark border-1 py-4 px-5 text-success"><b>Kem đánh răng</b></p>
+                <p class="col-1 border border-dark border-1 py-4 text-center">1</p>
+                <p class="col-2 border border-dark border-1 py-4 text-center">12 000</p>
+                <p class="col-2 border border-dark border-1 py-4 text-center">12000</p>
+                <p onclick="alert('Xóa sản phẩm')"class="col-1 border border-dark border-1 py-4 text-danger text-center" >Xóa</p>
+            </div>
+            <div class="row mx-5">
+                <p class="col-6 border border-dark border-1 py-4 px-5 text-success"><b>Kem đánh răng</b></p>
+                <p class="col-1 border border-dark border-1 py-4 text-center">1</p>
+                <p class="col-2 border border-dark border-1 py-4 text-center">12 000</p>
+                <p class="col-2 border border-dark border-1 py-4 text-center">12000</p>
+                <p onclick="alert('Xóa sản phẩm')"class="col-1 border border-dark border-1 py-4 text-danger text-center" >Xóa</p>
+            </div>
+            <div class="row mx-5">
+                <p class="col-6 border border-dark border-1 py-4 px-5 text-success"><b>Kem đánh răng</b></p>
+                <p class="col-1 border border-dark border-1 py-4 text-center">1</p>
+                <p class="col-2 border border-dark border-1 py-4 text-center">12 000</p>
+                <p class="col-2 border border-dark border-1 py-4 text-center">12000</p>
+                <p onclick="alert('Xóa sản phẩm')"class="col-1 border border-dark border-1 py-4 text-danger text-center" >Xóa</p>
+            </div>
+            <div class="row mx-5 m-2 py-3 border border-dark border-1 ">
+                <div class="col-9"></div>
+                <div class="col-3">
+                    <h6>Tổng tiền hàng: <span>120000</span>VND</h6>
+                <h6>Phí vận chuyển: <span>0</span> VND</h6>
+                </div>
+            </div>
+            <div class="row mx-5  border border-dark border-1 ">
+                <p class="col-6 py-3 px-5 text-success"></p>
+                <p class="col-3 py-4 text-center text-success"><b>Tổng thanh toán: <span>1 200 000</span> VND</b></p>
+                <p class="col-3 py-3 text-center"><a href="user-payment-confirm.html" class="btn btn-success">Thanh toán</a></p>
+            </div>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/1de341d6e9.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>

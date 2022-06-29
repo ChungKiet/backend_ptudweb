@@ -52,12 +52,17 @@ class UserController {
 
    // [GET] /users/get-profile
    async user_profile(req, res, next) {
-      const id = req.body.id;
+      const id = req.query.id;
       const user = await User.findOne({
          id: id
       }); // ignore this info
-      if (user) {
-         res.json(user);
+      if (true) {
+         res.status(200).render('user/user-profile',{
+            user,
+            layout:'layout1.hbs',
+            style:'user-profile.css',
+            title:'Profile'
+         });
       }
       else {
          res.status(404).send({
@@ -70,4 +75,4 @@ class UserController {
    }
 }
 
-module.exports = new UserController
+module.exports = new UserController;

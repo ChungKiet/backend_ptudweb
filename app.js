@@ -1,12 +1,26 @@
 const express = require('express');
+const expressHbs = require('express-handlebars');
 const cors = require("cors");
-const route = require('../routes');
-const db = require('../db/mongodb');
+const route = require('./routes');
+const db = require('./db/mongodb');
 const app = express();
+const path = require('path');
 const port = 8000;
 
-app.use(express.json());
+// app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+//Template engine
+const hbs = expressHbs.create({
+  layoutsDir: path.join(__dirname, 'views/layouts'),
+  partialsDir: path.join(__dirname, 'views/partials'),
+  extname: 'hbs',
+  defaultLayout: 'layout' 
+});
+
+app.engine('hbs', hbs.engine);
+app.set('view engine', 'hbs');
+app.set("views",path.join(__dirname, 'views'))
+app.use(express.static(__dirname + '/public'));
 
 // app.engine("html", require("ejs").renderFile);
 // app.set('views', './src/views')
