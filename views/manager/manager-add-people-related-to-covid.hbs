@@ -1,0 +1,222 @@
+<body>
+    <div class="container-fluid">
+        <header class="d-flex flex-row">
+            <h1>COVID-19</h1>
+            <nav id="toolbar">
+                <a class="mx-5" id="to-homepage" href="/html.manager-add-people-related-to-covid.htm">Trang chủ</a>
+                <a class="mx-5" id="to-product-management" href="manager-set-of-product.html">Gói nhu yêu phẩm</a>
+            </nav>
+            <div class="dropdown me-5" id="satistic-pop-up">
+                <button class="dropbtn">Thống kê và quản lý </button>
+                <div class="dropdown-content">
+                    <a href="manager-add-people-related-to-covid.htm">Quản lý người liên quan đến COVID</a>
+                    <a href="manager-statistic-info.html">Thống kê số liệu</a>
+                    <a href="manager-update-the-min-payment.html">Điều chỉnh mức thanh toán tối thiểu</a>
+                </div>
+            </div>
+
+            
+
+            <div id="profile-area" class="d-flex flex-row">
+                
+                <!-- <i class="fa-solid fa-user "></i> -->
+                <p id="username">Nguyễn Văn A</p>
+                <button id="btn-profile" class="border-0 bg-transparent"><i class="fa-solid fa-user"></i></button>
+
+                <div class="dropdown" id="account-menu-pop-up">
+                    <button id="btn-profile" class="border-0 bg-transparent"><i class="fa-solid fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="manager-profile.htm">Tài khoản</a>
+                        <a href="index.html">Đăng xuất</a>
+                    </div>
+                </div>
+            
+            </div>
+        </header>
+        <div class="main">
+            <aside>
+                <form id="filter" action="#">
+                    <label class="" for="name">Họ và Tên: </label>
+                    <input id="name" name="name" type="text" class="my-2">
+                    <label class="" for="age">Độ tuổi: </label>
+                    <input id="age" name="age" type="number" class="my-2">
+                    <label for="hometown">Quê quán</label>
+                    <select name="hometown" id="hometowns" class="my-2">
+                        <option value="">Chọn địa điểm</option>
+                        <option value="Hồ Chí Minh">Thành phố Hồ Chí Minh</option>
+                        <option value="Hà Nội">Thành phố Hà Nội</option>
+                        <option value="Bình Định">Bình Định</option>
+                        <option value="Đắk Lắk">Đắk Lắk</option>
+                    </select>
+
+                    <button id="btn-filter-submit" class="btn btn-success my-2" type="submit" >TÌM</button>
+                </form>
+            </aside>
+            <div id="content">
+                <div>
+                    <a id="add-person-btn" class="btn text-white rounded-pill" href="manager-person-related-to-covid-info.htm">+ Thêm người</a>
+                </div>
+                <div id="list-of-people">
+                    
+
+                    
+                    <div class="person-info-display  d-flex flex-row ">
+                        <img class="person-avatar" src="images/empty_avatar.jpg" alt="ảnh chân dung">
+                        <div class="person-text-info mx-5">
+                            <h6 class="person-name-age"><span>Nguyễn Văn AAA</span>, <span>20</span> tuổi</h6>
+                            <p class="person-hometown">Địa chỉ cư trú: <span>phường A, quận B, thành phố C, tỉnh D</span></p>
+                            <a class="to-person-travel-history btn" href="manager-travel-history.htm">Xem lịch sử di chuyển</a>
+                            <a class="to-personal-info btn" href="manager-person-related-to-covid-info.htm">Xem thông tin cá nhân</a>
+                        </div>
+                        <hr width="1" size="100%">
+                        <div class="additional-personal-info container row">
+                            <div class="addition-info-1 col-lg-6 col-md-12">
+                                <h6>Địa điểm cuối cùng đã đến</h6>
+                                <ul class="last-known-place">
+                                    <li>xyz đường ABC</li>
+                                    <li>chung cư AAA khu BBB</li>
+                                    <li>trường ABCXYZ</li>
+                                </ul>
+                                <a class="more-info" href="manager-travel-history.htm">+Chi tiết</a>
+    
+                            </div>
+                            <div class="addition-info-1 col-lg-6 col-md-12">
+                                <h6>Người tiếp xúc cuối cùng</h6>
+                                <ul class="last-people-in-contact">
+                                    <li>Simon Baker</li>
+                                    <li>Jonny Lee Miller</li>
+                                    <li>Travis Fimmel</li>
+                                </ul>
+                                <a class="more-info" href="manager-travel-history.htm">+Chi tiết</a>
+                            </div>
+    
+                        </div>
+                        
+                    </div>
+                    <hr>
+                    <div class="person-info-display  d-flex flex-row ">
+                        <img class="person-avatar" src="images/empty_avatar.jpg" alt="ảnh chân dung">
+                        <div class="person-text-info mx-5">
+                            <h6 class="person-name-age"><span>Trần Thị B</span>, <span>30</span> tuổi</h6>
+                            <p class="person-hometown">Địa chỉ cư trú: <span>phường A, quận B, thành phố C, tỉnh D</span></p>
+                            <a class="to-person-travel-history btn" href="manager-travel-history.htm">Xem lịch sử di chuyển</a>
+                            <a class="to-personal-info btn" href="manager-person-related-to-covid-info.htm">Xem thông tin cá nhân</a>
+                        </div>
+                        <hr width="1" size="100%">
+                        <div class="additional-personal-info container row">
+                            <div class="addition-info-1 col-lg-6 col-md-12">
+                                <h6>Địa điểm cuối cùng đã đến</h6>
+                                <ul class="last-known-place">
+                                    <li>xyz đường ABC</li>
+                                    <li>chung cư AAA khu BBB</li>
+                                    <li>trường ABCXYZ</li>
+                                </ul>
+                                <a class="more-info" href="manager-travel-history.htm">+Chi tiết</a>
+    
+                            </div>
+                            <div class="addition-info-1 col-lg-6 col-md-12">
+                                <h6>Người tiếp xúc cuối cùng</h6>
+                                <ul class="last-people-in-contact">
+                                    <li>Simon Baker</li>
+                                    <li>Jonny Lee Miller</li>
+                                    <li>Travis Fimmel</li>
+                                </ul>
+                                <a class="more-info" href="manager-travel-history.htm">+Chi tiết</a>
+                            </div>
+    
+                        </div>
+                        
+                    </div>
+                    <hr>
+                    <div class="person-info-display  d-flex flex-row ">
+                        <img class="person-avatar" src="images/empty_avatar.jpg" alt="ảnh chân dung">
+                        <div class="person-text-info mx-5">
+                            <h6 class="person-name-age"><span>Đỗ Quang C</span>, <span>25</span> tuổi</h6>
+                            <p class="person-hometown">Địa chỉ cư trú: <span>phường A, quận B, thành phố C, tỉnh D</span></p>
+                            <a class="to-person-travel-history btn" href="manager-travel-history.htm">Xem lịch sử di chuyển</a>
+                            <a class="to-personal-info btn" href="manager-person-related-to-covid-info.htm">Xem thông tin cá nhân</a>
+                        </div>
+                        <hr width="1" size="100%">
+                        <div class="additional-personal-info container row">
+                            <div class="addition-info-1 col-lg-6 col-md-12">
+                                <h6>Địa điểm cuối cùng đã đến</h6>
+                                <ul class="last-known-place">
+                                    <li>xyz đường ABC</li>
+                                    <li>chung cư AAA khu BBB</li>
+                                    <li>trường ABCXYZ</li>
+                                </ul>
+                                <a class="more-info" href="manager-travel-history.htm">+Chi tiết</a>
+    
+                            </div>
+                            <div class="addition-info-1 col-lg-6 col-md-12">
+                                <h6>Người tiếp xúc cuối cùng</h6>
+                                <ul class="last-people-in-contact">
+                                    <li>Simon Baker</li>
+                                    <li>Jonny Lee Miller</li>
+                                    <li>Travis Fimmel</li>
+                                </ul>
+                                <a class="more-info" href="manager-travel-history.htm">+Chi tiết</a>
+                            </div>
+    
+                        </div>
+                        
+                    </div>
+                    <hr>
+                    <div class="person-info-display  d-flex flex-row ">
+                        <img class="person-avatar" src="images/empty_avatar.jpg" alt="ảnh chân dung">
+                        <div class="person-text-info mx-5">
+                            <h6 class="person-name-age"><span>Trần D</span>, <span>50</span> tuổi</h6>
+                            <p class="person-hometown">Địa chỉ cư trú: <span>phường A, quận B, thành phố C, tỉnh D</span></p>
+                            <a class="to-person-travel-history btn" href="manager-travel-history.htm">Xem lịch sử di chuyển</a>
+                            <a class="to-personal-info btn" href="manager-person-related-to-covid-info.htm">Xem thông tin cá nhân</a>
+                        </div>
+                        <hr width="1" size="100%">
+                        <div class="additional-personal-info container row">
+                            <div class="addition-info-1 col-lg-6 col-md-12">
+                                <h6>Địa điểm cuối cùng đã đến</h6>
+                                <ul class="last-known-place">
+                                    <li>xyz đường ABC</li>
+                                    <li>chung cư AAA khu BBB</li>
+                                    <li>trường ABCXYZ</li>
+                                </ul>
+                                <a class="more-info" href="manager-travel-history.htm">+Chi tiết</a>
+    
+                            </div>
+                            <div class="addition-info-1 col-lg-6 col-md-12">
+                                <h6>Người tiếp xúc cuối cùng</h6>
+                                <ul class="last-people-in-contact">
+                                    <li>Simon Baker</li>
+                                    <li>Jonny Lee Miller</li>
+                                    <li>Travis Fimmel</li>
+                                </ul>
+                                <a class="more-info" href="manager-travel-history.htm">+Chi tiết</a>
+                            </div>
+    
+                        </div>
+                        
+                    </div>
+                    <hr>
+                    
+                    
+                    
+                </div>
+                <div>
+                    <nav id="list-of-resuls">
+                        <a id="page-first" href="#"><b>&larr;</b></a>
+                        <a id="page1" href="#">1</a>
+                        <a id="page2" href="#">2</a>
+                        <a id="page3" href="#">3</a>
+                        <a id="page4" href="#">4</a>
+                        <a id="page5" href="#">5</a>
+                        ...
+                        <a id="page-last" href="#"><b>&rarr;</b></a>
+
+
+                    </nav>
+                </div>
+            </div>
+        </div>    
+    </div>
+    <script src="https://kit.fontawesome.com/1de341d6e9.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
