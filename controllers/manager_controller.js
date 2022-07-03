@@ -17,12 +17,15 @@ class ManagerController {
       // try {
          const user = await User.create({id, username, name, password, user_type, birthday, address, email, phone, min_exchange, quarantine_state, updated_state });
          res.send({ "msg": 1, 'user': user });
+
       // }
       // catch (err) {
       //    res.status(401).send({
       //       "msg": 0, 'user': null
       //    });
+
       // }
+
    }
 
    // delete 

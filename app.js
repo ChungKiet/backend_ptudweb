@@ -10,7 +10,7 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 
-// app.use(express.json());
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //Template engine
 const hbs = expressHbs.create({
