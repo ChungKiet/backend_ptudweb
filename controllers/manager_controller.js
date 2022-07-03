@@ -2,7 +2,7 @@ const User = require("../models/user");
 class ManagerController {  
 
    // [POST] /manager/register --> Create new user (call for manager)
-   async add_user(req, res, next) {
+   add_user(req, res, next) {
       // const { id, username,  name, password, user_type, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
       // const userExists = await User.findOne({ username : username });
       // if (userExists) {
@@ -29,7 +29,7 @@ class ManagerController {
       // }
       res.status(200).render('manager/manager-add-people-related-to-covid',{
          title: 'Thêm người tiếp xúc',
-         style: 'css/manager-add-people-related-to-covid.css',
+         style: '../../css/manager-add-people-related-to-covid.css',
          layout:'layout1.hbs'
       });
    }
