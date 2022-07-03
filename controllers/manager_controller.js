@@ -60,7 +60,16 @@ class ManagerController {
 
       const user = await userFind.exec();
 
-      res.json({"message": 1, "user": user.slice(from, to), "movHis": movHis})
+      // res.json({"message": 1, "user": user.slice(from, to), "movHis": movHis})
+      res.status(200).render('manager/manager-add-people-related-to-covid',{
+         message: 1,
+         user: user.slice(from,to),
+         movHis: movHis,
+         layout:'layout1.hbs',
+         style:'../../css/manager-add-people-related-to-covid.css',
+         title:'Danh sách người liên quan Covid'
+      });
+      
    }
 
 }
