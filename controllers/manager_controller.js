@@ -4,8 +4,17 @@ class ManagerController {
 
    // [POST] /manager/register --> Create new user (call for manager)
    async add_user(req, res, next) {
-      const { id,  name, user_type, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
-      console.log(id, username,  name, password, "Testsererojoajidso")
+      // const { id,  name, user_type, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
+      const id = req.body.id;
+      const name = req.body.name;
+      const user_type = 'user';
+      const birthday = req.body.birthday;
+      const address = req.body.address;
+      const email = req.body.email;
+      const phone = req.body.phone;
+      const min_exchange = 0;
+      const quarantine_state = 0;
+      const updated_state = "2001-01-01T00:00:00.000Z";
       const password = "0000";
       const username = id;
       const userExists = await User.findOne({ id : id });
@@ -26,6 +35,16 @@ class ManagerController {
 
       // }
 
+   }
+
+   //new user form
+   new_user_form(req, res, next){
+      res.status(200).render('manager/manager-person-related-to-covid-info',{
+         message: 1,
+         layout:'layout1.hbs',
+         style:'../../css/manager-person-related-to-covid-info.css',
+         title:'Thêm người liên quan Covid'
+      });
    }
 
    // delete 
@@ -51,7 +70,7 @@ class ManagerController {
       const page = Number(req.query.page) || 1;
       const from = (page - 1) * 4;
       const to = page * 4;
-      const userFind = User.find({});
+      const userFind = User.find({}).lean();
       const movH = MovementHis.find({});
       let movHis = {};
       for (let i = 0; i < movH.countDocuments(); i++){
