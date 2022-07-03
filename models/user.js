@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
       required: true,
    },
    birthday: {
-      type: Date, required: true, default: '2001-01-01T00:00:00.000Z'
+      type: Date, required: false, default: '2001-01-01T00:00:00.000Z'
    },
    address: {
       type: String,
@@ -53,7 +53,7 @@ const userSchema = new mongoose.Schema({
       required: false
    },
    updated_state : {
-      type: Date, required: true, default: '2001-01-01T00:00:00.000Z'
+      type: Date, required: false, default: '2001-01-01T00:00:00.000Z'
    }
 });
 

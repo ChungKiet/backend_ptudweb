@@ -1,5 +1,6 @@
 const SetOfProduct = require("../models/set_of_product");
 const Product = require("../models/product");
+const User = require("../models/user");
 
 class SetOfProdController {  
    async add_new_prod(req, res, next) {
@@ -48,6 +49,8 @@ class SetOfProdController {
    async view_all_prod(req, res, next) {
       try {
          const allOfSetOfProds = await SetOfProduct.find({}); // ignore this info
+         const {id_user} = req.body;
+         const user = User.findOne({id: id_user});
          let result = []
          if (allOfSetOfProds) {
             for (let i = 0; i < allOfSetOfProds.length; i++){
@@ -55,6 +58,14 @@ class SetOfProdController {
                result.push({"set_of_prod": allOfSetOfProds[i], "products": products})
             }
             res.json({"msg": 1, "all_of_et_of_prod": result});
+            // res.status(200).render('user/user-product', {
+            //    user: user,
+            //    all_set__of_prod: allOfSetOfProds,
+            //    movement_history: mov_his, 
+            //    layout:'layout1.hbs',
+            //    style:'user-profile.css',
+            //    title:'Profile'
+            // })
          }
          else {
             res.status(404).send({
