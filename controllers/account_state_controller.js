@@ -1,15 +1,15 @@
 const AccountState = require("../models/account_state");
 
-class AccStateController {  
+class AccStateController {
 
    async add_account_state(req, res, next) {
       const { username, name, password, role, state } = req.body;
       const acc_state = await AccountState.findOne({ username: username });
       if (acc_state) {
-            res.send({
-               "msg": 3, 'acc_state': null
-            });
-         }
+         res.send({
+            "msg": 3, 'acc_state': null
+         });
+      }
       try {
          const acc_state = await AccountState.create({ username, name, password, role, state });
          res.send({ "msg": 1, 'acc_state': acc_state });
@@ -26,10 +26,10 @@ class AccStateController {
       const { username, name, password, role, state } = req.body;
       const acc_state = await AccountState.findOne({ username: username });
       if (acc_state) {
-            res.send({
-               "msg": 3, 'acc_state': null
-            });
-         }
+         res.send({
+            "msg": 3, 'acc_state': null
+         });
+      }
       try {
          const acc_state = await AccountState.create({ username, name, password, role, state });
          res.send({ "msg": 1, 'acc_state': acc_state });
@@ -42,7 +42,7 @@ class AccStateController {
    }
 
    // delete
-   async delete_acc_state(req, res, next){
+   async delete_acc_state(req, res, next) {
       const username = req.body.username;
       try {
          await AccountState.deleteOne({ username: username });
@@ -60,7 +60,7 @@ class AccStateController {
    }
 
    // read all account by state
-   async get_acc_state(req, res, next){
+   async get_acc_state(req, res, next) {
       const { state } = req.body;
       try {
          const acc_state = await AccountState.find({ state: state });

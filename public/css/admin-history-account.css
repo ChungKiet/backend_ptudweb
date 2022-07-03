@@ -43,7 +43,8 @@ header h1{
     right: 20px;
     gap:10px;
     line-height:45px ;
-    
+    margin-right: 10%;
+
      
 }
 .function-btn{
@@ -69,18 +70,20 @@ header h1{
     flex-direction: row;
     height:100vh;
 }
-aside{
-    flex-basis: 15%;
+#menu{
+    flex-basis: 13%;
     padding:20px;
 }
 #content{
     background-color:white;
-    height:fit-content;
-    width: 100%;
     display: flex;
     flex-direction: column;
+    flex-basis: 85%;
+    height: 95%;
+
+
 }
-#username{
+#adminLabel{
     color: white;
 }
 
@@ -100,6 +103,9 @@ aside{
     padding: 5px;
 }
 #list-of-resuls{
+    height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
     text-align: center;
 }
 
@@ -160,4 +166,16 @@ img{
     background-color: #609B53;
     border: none;
     font-size: 120%;
+}
+
+.table-hover tbody tr:hover .btn-func {
+    display: inline;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+th,
+td {
+    padding-left: 20px !important;
 }

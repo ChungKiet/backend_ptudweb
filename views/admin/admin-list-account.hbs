@@ -1,0 +1,122 @@
+<body>
+  <div class="main">
+    <aside id="menu" class="row-cols-1 m-0 p-0">
+      <form id="account-list" action="admin-list-account">
+      </form>
+      <form id="destination-list" action="admin-list-destination">
+      </form>
+      <button id="account-list" class="btn function-btn" form="account-list"><b>Tài khoản</b></button>
+      <button id="destination-list" class="btn function-btn" form="destination-list"><b>Địa điểm</b></button>
+    </aside>
+    <div id="content">
+      <div class="search-bar">
+        <form class="search-form w-50 my-2 mx-2 ps-1 rounded-3 ">
+          <input class="form-control border-0" type="search" placeholder="Nhập thông tin muốn tìm kiếm"
+            aria-label="Search" autocomplete>
+          <button class="btn" type="submit" class="float-end"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+      </div>
+      <table class=" table table-striped table-hover ">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 10%">STT</th>
+            <th scope="col" style="width: 30%">Tài khoản</th>
+            <th scope="col" style="width: 30%">Tên</th>
+            <th scope="col" style="width: 20%">Quyền</th>
+            <th style="width: 10%" class="icon">
+              <img src="../images/add-icon.png" alt="add-account" onclick="openPopUp()">
+            </th>
+          </tr>
+        </thead>
+
+        <tbody id="accounts" class="list-group-flush">
+          {{#each acc_state}}
+          <tr>
+            <th scope="row">{{this}}</th>
+            <td>{{username}}</td>
+            <td>{{name}}</td>
+            <td>{{role}}</td>
+            <td>
+              <a href="admin-history-account">
+                <img class="btn-func" src="../images/history-icon.png" alt="history-account">
+              </a>
+              <img class="mx-3 btn-func" onclick="changeState()" src="../images/unlocked-icon.png" alt="unlocked-icon" id="stateButton">
+            </td>
+          </tr>
+          {{/each}}
+        
+        </tbody>
+      </table>
+      <div id="addAccountFrag" class="form-container">
+
+        <img class="back-icon" src="../images/close-icon.png" onclick="closePopUp()" alt="">
+        <div class="form-label text-center">
+          <h2>Tài khoản</h2>
+        </div>
+        <form id="form-account" class="inputform">
+          <label for="username">Tài khoản</label>
+          <input id="username" type="text" name="username" autocomplete="on" required>
+          <label for="password">Mật khẩu</label>
+          <input id="password" type="password" name="password" required>
+          <label for="role">Quyền</label>
+          <select name="role" id="role">
+            <option value="manage">Quản lý</option>
+            <option value="user">Người dùng</option>
+          </select>
+          <button id="btn-submit" class="btn btn-success" type="submit">Xác nhận</button>
+        </form>
+      </div>
+      <div id="list-of-resuls">
+        <nav>
+          <a id="page-first" href="#"><b>&larr;</b></a>
+          <a id="page1" href="#">1</a>
+          <a id="page2" href="#">2</a>
+          <a id="page3" href="#">3</a>
+          <a id="page4" href="#">4</a>
+          <a id="page5" href="#">5</a>
+          ...
+          <a id="page-last" href="#"><b>&rarr;</b></a>
+
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    var form = document.getElementById('addAccount');
+    var accountList = document.getElementById('accounts');
+
+    form.addEventListener('addAccount', addAccount);
+    function addAccount() {
+      //var newItem = document.getElementById('item').value;
+      var row = accountList.insertRow();
+      var cell = row.insertCell();
+      cell.innerHTML = "stt";
+      cell = row.insertCell();
+      cell.innerHTML = "id";
+      cell = row.insertCell();
+      cell.innerHTML = "tai khoan";
+      cell = row.insertCell();
+      cell.innerHTML = "quyen";
+      cell = row.insertCell();
+      cell.outerHTML = '<td><a href="admin-history-account.html"> <img class="btn-func" src="../images/history-icon.png" alt="history-account"> </a>  <img class="mx-3 btn-func" onclick="" src="../images/unlocked-icon.png" alt="unlocked-icon"> </td>';
+    }
+
+    function openPopUp() {
+      const addAccountFrag = document.getElementById("addAccountFrag");
+      addAccountFrag.style.display = 'block';
+      console.log(addAccountFrag.style.width);
+
+    }
+
+    function closePopUp() {
+      const addAccountFrag = document.getElementById("addAccountFrag");
+      addAccountFrag.style.display = 'none';
+    }
+
+    function changeState() {
+      const state = document.getElementById("stateButton");
+      state.src="../images/unlocked-icon.png";
+      {{state}}
+    }
+  </script>
+</body>
