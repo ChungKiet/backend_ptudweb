@@ -1,78 +1,106 @@
-<body>
-    <div class="container-fluid">
-        <header class="d-flex flex-row shadow">
-            <h1>COVID</h1>
-            <h4 id="home" class="px-5"><a href="user-product.html"
-                    class="text-decoration-none text-white text-center">Trang chủ</a></h4>
-            <div id="profile-area" class="">
-                {{#each user}}
-                {{#if name}}
-                <p id="username">{{name}}</p>
-                {{/if}}
-                {{/each}}
-                <div class="pb-3">
-                    <i class="fa-solid fa-user "></i>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-infor dropdown-toggle" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="user-order.html">Đơn mua</a></li>
-                            <li><a class="dropdown-item" href="user-profile.html">Hồ sơ cá nhân</a></li>
-                            <li><a class="dropdown-item" href="budget.html">Tài khoản thanh toán</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="index.html">Đăng xuất</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-        </header>
-        <div class="main d-flex flex-column">
-            <div class="row mx-5 my-3">
-                <h2 class="col-md-6 col-sm-12">Hồ sơ cá nhân</h2>
-                <h5 class="col-md-6 col-sm-12 text-end">Mã TK<span id="account-id">09723449384375934</span></h5>
-            </div>
-            <div class="container-fluid d-flex flex-row justify-content-center">
-                <div id="user-info" class="container d-flex flex-column mx-5 px-5">
-                    <p>Họ và tên: </p>
-                    {{#each user}}
-                    {{#if name}}
-                    <input id="name" class="w-200" value={{name}} readonly>
-                    <p>Ngày sinh: </p>
-                    <input id="dob" class="w-100" value={{birthday}} readonly>
-                    <p>Giới tính: <span id="gender">Nam</span></p>
-                    <script>
-                        function log_console() {
-                            console.log
-                                ({{ this}});
-                        }
-                    </script>
-                    <!-- <div class="form-check">
-                    <input class="form-check-input" type="radio" name="male" id="male" value="Male">
-                    <label class="form-check-label" for="male">Nam</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="female" id="female" checked>
-                    <label class="form-check-label" for="female">Nữ
-                    </label>
-                  </div> -->
-                    <p>Số điện thoại: </p>
-                    <input id="dob" class="w-100" value={{phone}} readonly>
-                    <a class="btn btn-success my-3 w-25" id="btn-edit-info" onclick="log_console">Chỉnh sửa</a>
-                    {{/if}}
-                    {{/each}}
-                </div>
-                <div class="container d-flex flex-row justify-content-center mx-5">
-                    <img style="width:200px; height:200px" src="/images/QR.png" alt="QR code">
+<div class="container-fluid">
+    <header class="d-flex flex-row shadow">
+        <h1>COVID</h1>
+        <h4 id="home" class="px-5"><a href="product"
+                class="text-decoration-none text-white text-center">Trang chủ</a></h4>
+        <div id="profile-area" class="">
+            {{#each user}}
+            {{#if name}}
+            <p id="username">{{name}}</p>
+            {{/if}}
+            {{/each}}
+            <div class="pb-3">
+                <i class="fa-solid fa-user "></i>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-infor dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="user-order.html">Đơn mua</a></li>
+                        <li><a class="dropdown-item" href="get-profile">Hồ sơ cá nhân</a></li>
+                        <li><a class="dropdown-item" href="budget.html">Tài khoản thanh toán</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="/">Đăng xuất</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
+    </header>
+    <div class="main d-flex flex-column">
+        <div class="row mx-5 my-3">
+            <h2 class="col-md-6 col-sm-12">Hồ sơ cá nhân</h2>
+            <h5 class="col-md-6 col-sm-12 text-end">Mã TK<span id="account-id">09723449384375934</span></h5>
+        </div>
+        <div class="container-fluid d-flex flex-row justify-content-center">
+            <div id="user-info" class="container d-flex flex-column mx-5 px-5">
+                <p><b>Họ và tên:</b> </p>
+                {{#each user}}
+                {{#if name}}
+                <input id="name" class="w-200" type="text" value={{name}} readonly>
+                <p class="mt-2"><b>Ngày sinh:</b> </p>
+                <input id="dob" type="date" class="w-100" value={{birthday}} readonly>
+                <p class="mt-2"><b>Email: </b></p>
+                <input id="email" type="mail" class="w-100" value={{email}} readonly>
+                <p class="mt-2"><b>Địa chỉ: </b></p>
+                <input id="address" class="w-100" value={{address}} readonly>
+                {{!-- <script>
+                    function log_console() {
+                        console.log
+                            ({{ this}});
+                    }
+                </script> --}}
+                <p class="mt-2"><b>Số điện thoại:  </b> </p>
+                <input id="phone" class="w-100" type="number" value={{phone}} readonly>
+                <button class="btn btn-success my-3 w-25" id="btn-edit-info" >Chỉnh sửa</button>
+                {{/if}}
+                {{/each}}
+            </div>
+            <div class="container d-flex flex-row justify-content-center mx-5">
+                <img style="width:200px; height:200px" src="/images/QR.png" alt="QR code">
+            </div>
+        </div>
     </div>
-    <script src="https://kit.fontawesome.com/1de341d6e9.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-</body>
+</div>
+<script>
+    btnEdit=document.getElementById('btn-edit-info');
+    const Name = document.getElementById('name');
+    const Dob = document.getElementById('dob');
+    const Email = document.getElementById('email');
+    const Phone = document.getElementById('phone');
+    const Address = document.getElementById('address');
+    btnEdit.addEventListener('click', () => {
+        if(btnEdit.innerHTML=="Chỉnh sửa"){
+            btnEdit.innerHTML="Lưu";
+            Name.removeAttribute('readonly');
+            Dob.removeAttribute('readonly');
+            Email.removeAttribute('readonly');
+            Phone.removeAttribute('readonly');
+            Address.removeAttribute('readonly');
+        }
+        else if (btnEdit.innerHTML=="Lưu"){
+            btnEdit.innerHTML="Chỉnh sửa";
+            Name.setAttribute('readonly',true);
+            Dob.setAttribute('readonly',true);
+            Email.setAttribute('readonly',true);
+            Phone.setAttribute('readonly',true);
+            Address.setAttribute('readonly',true);
+            update_profile();
+        }
+    });
+    function update_profile(){
+        const name=Name.innerHTML;
+        const email=Email.innerHTML;
+        const phone=Phone.innerHTML;
+        const address=Address.innerHTML;
+        const dob=Dob.innerHTML;
+
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            document.getElementsById("name").innerHTML = "hihi";
+        }
+        xhttp.open("PUT", "http://127.0.0.1:8000/user/update-profile");
+        xhttp.send(`name=${name}&email=${email}&birthday=${dob}&address=${address}&phone=${phone}`);
+    }
+</script>
