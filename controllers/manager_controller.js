@@ -51,15 +51,16 @@ class ManagerController {
       const page = Number(req.query.page) || 1;
       const from = (page - 1) * 4;
       const to = page * 4;
-      const user = User.find({});
-
-      const movHis = [];
-      for (let i = 0; i < user.countDocuments(); i++){
-         const movH = MovementHis.findOne({id: user[i].id})
-         movHis.push(movH)
+      const userFind = User.find({});
+      const movH = MovementHis.find({});
+      let movHis = {};
+      for (let i = 0; i < movH.countDocuments(); i++){
+         movHis[movH[i].id_user] = movH[i];
       }
 
-      res.json({"message": 1, "user": user.slice(from, to), "movHis": movHis.slice(from, to)})
+      const user = await userFind.exec();
+
+      res.json({"message": 1, "user": user.slice(from, to), "movHis": movHis})
    }
 
 }
