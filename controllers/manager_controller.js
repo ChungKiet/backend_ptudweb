@@ -1,3 +1,4 @@
+const MovementHis = require("../models/movement_history");
 const User = require("../models/user");
 class ManagerController {  
 
@@ -39,6 +40,21 @@ class ManagerController {
             }
          });
       }
+   }
+
+   async get_all_user(req, res, next) {
+      const page = Number(req.query.page) || 1;
+      const from = (page - 1) * 4;
+      const to = page * 4;
+      const user = User.find({});
+
+      const movHis = [];
+      for (let i = 0; i < user.countDocuments(); i++){
+         const movH = MovementHis.findOne({"username": user[i].username})
+         movHis.push(movH)
+      }
+
+      res.json({"message": 1, "user": user.slice(from, to), "movHis": movHis.slice(from, to)})
    }
 
 }
