@@ -4,9 +4,11 @@ class ManagerController {
 
    // [POST] /manager/register --> Create new user (call for manager)
    async add_user(req, res, next) {
-      const { id, username,  name, password, user_type, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
+      const { id,  name, user_type, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
       console.log(id, username,  name, password, "Testsererojoajidso")
-      const userExists = await User.findOne({ username : username });
+      const password = "0000";
+      const username = id;
+      const userExists = await User.findOne({ id : id });
       if (userExists) {
             res.send({
                "msg": 3, 'user': null
@@ -53,7 +55,7 @@ class ManagerController {
 
       const movHis = [];
       for (let i = 0; i < user.countDocuments(); i++){
-         const movH = MovementHis.findOne({"username": user[i].username})
+         const movH = MovementHis.findOne({id: user[i].id})
          movHis.push(movH)
       }
 
