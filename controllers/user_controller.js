@@ -68,6 +68,54 @@ class UserController {
          title:'Product'
       });
    }
+   // [GET] /user/product
+   async user_order(req, res, next) {
+      res.status(200).render('user/user-order',{
+         layout:'layouttest',
+         style:'user-order.css',
+         title:'Order'
+      });
+   }
+   // [GET] /user/product
+   async budget(req, res, next) {
+      res.status(200).render('user/user-payment',{
+         layout:'layouttest',
+         style:'user-payment.css',
+         title:'Budget'
+      });
+   }
+    // [GET] /user/product
+    async details(req, res, next) {
+      res.status(200).render('user/user-product-details',{
+         layout:'layouttest',
+         style:'user-product-details.css',
+         title:'Details'
+      });
+   }
+    // [GET] /user/product
+    async cart(req, res, next) {
+      res.status(200).render('user/user-shopping-cart',{
+         layout:'layouttest',
+         style:'user-shopping-cart.css',
+         title:'Cart'
+      });
+   }
+
+   async confirm(req, res, next) {
+      res.status(200).render('user/user-payment-confirm',{
+         layout:'layouttest',
+         style:'user-payment-confirm.css',
+         title:'Payment Confirm'
+      });
+   }
+   async payment_completed(req, res, next) {
+      res.status(200).render('user/user-payment-completed',{
+         layout:'layouttest',
+         style:'user-payment-completed.css',
+         title:'Payment Completed'
+      });
+   }
+   
 
    // [GET] /users/get-profile
    async user_profile(req, res, next) {
