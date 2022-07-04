@@ -6,16 +6,16 @@ class ManagerController {
    async add_user(req, res, next) {
       const userCount = await User.find({}).countDocuments();
       
-      // if (!req.url.includes('?')) {
-      //    console.log('req null');
-      //    res.status(200).render('manager/manager-person-related-to-covid-info',{
-      //       message: 1,
-      //       layout:'layout1.hbs',
-      //       style:'../../css/manager-person-related-to-covid-info.css',
-      //       title:'Thêm người liên quan Covid'
-      //    });
-      // }
-      // else{
+      if (!req.url.includes('?')) {
+         console.log('req null');
+         res.status(200).render('manager/manager-person-related-to-covid-info',{
+            message: 1,
+            layout:'layout1.hbs',
+            style:'../../css/manager-person-related-to-covid-info.css',
+            title:'Thêm người liên quan Covid'
+         });
+      }
+      else{
          console.log("not null");
          // const { id,  name, user_type, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
          const name = req.body.name;
@@ -38,16 +38,16 @@ class ManagerController {
                });
          }
          const user = await User.create({id, username, name, password, user_type, birthday, address, email, phone, cmnd, min_exchange, quarantine_state, updated_state });
-         // res.send({ "msg": 1, 'user': user });
+         res.send({ "msg": 1, 'user': user });
 
-         // res.status(200).render('manager/manager-add-people-related-to-covid',{
-         //    message: 1,
-         //    layout:'layout1.hbs',
-         //    style:'../../css/manager-add-people-related-to-covid.css',
-         //    title:'Danh sách người liên quan Covid'
-         // });
+         res.status(200).render('manager/manager-add-people-related-to-covid',{
+            message: 1,
+            layout:'layout1.hbs',
+            style:'../../css/manager-add-people-related-to-covid.css',
+            title:'Danh sách người liên quan Covid'
+         });
 
-      // }
+      }
       
    
    }
