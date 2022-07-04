@@ -23,7 +23,8 @@ const quarantineLocationSChema = new mongoose.Schema({
    },
    state: {
       type: Boolean,
-      required: true
+      required: true,
+      default: true
    },
 });
 
