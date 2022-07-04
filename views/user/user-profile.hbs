@@ -30,7 +30,7 @@
     </header>
     <div class="main d-flex flex-column">
         <div class="row mx-5 my-3">
-            <h2 class="col-md-6 col-sm-12">Hồ sơ cá nhân</h2>
+            <h2 id="test" class="col-md-6 col-sm-12">Hồ sơ cá nhân</h2>
             <h5 class="col-md-6 col-sm-12 text-end">Mã TK<span id="account-id">09723449384375934</span></h5>
         </div>
         <div class="container-fluid d-flex flex-row justify-content-center">
@@ -38,13 +38,13 @@
                 <p><b>Họ và tên:</b> </p>
                 {{#each user}}
                 {{#if name}}
-                <input id="name" class="w-200" type="text" value={{name}} readonly>
+                <input id="name" class="w-200" type="text" value="{{name}}" readonly>
                 <p class="mt-2"><b>Ngày sinh:</b> </p>
-                <input id="dob" type="date" class="w-100" value={{birthday}} readonly>
+                <input id="dob" type="datetime" class="w-100" value="{{birthday}}" readonly>
                 <p class="mt-2"><b>Email: </b></p>
                 <input id="email" type="mail" class="w-100" value={{email}} readonly>
                 <p class="mt-2"><b>Địa chỉ: </b></p>
-                <input id="address" class="w-100" value={{address}} readonly>
+                <input id="address" class="w-100" value="{{address}}" readonly>
                 {{!-- <script>
                     function log_console() {
                         console.log
@@ -70,7 +70,9 @@
     const Email = document.getElementById('email');
     const Phone = document.getElementById('phone');
     const Address = document.getElementById('address');
+    
     btnEdit.addEventListener('click', () => {
+        
         if(btnEdit.innerHTML=="Chỉnh sửa"){
             btnEdit.innerHTML="Lưu";
             Name.removeAttribute('readonly');
@@ -78,29 +80,48 @@
             Email.removeAttribute('readonly');
             Phone.removeAttribute('readonly');
             Address.removeAttribute('readonly');
+            const p_name=Name.value;
+            const p_email=Email.value;
+            const p_phone=Phone.value;
+            const p_address=Address.value;
+            const p_dob=Dob.value;
         }
         else if (btnEdit.innerHTML=="Lưu"){
-            btnEdit.innerHTML="Chỉnh sửa";
+            update_profile();
+        }
+    });
+    function update_profile(){
+        btnEdit.innerHTML="Chỉnh sửa";
+        const name=Name.value;
+        const email=Email.value;
+        const phone=Phone.value;
+        const address=Address.value;
+        const dob=Dob.value;
+
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            if(this.status==200){
+                Name.value=name;
+                Email.value=email;
+                phone.value=phone;
+                address.value=address;
+                dob.value=dob;
+            }
+            else{
+                Name.value=p_name;
+                Email.value=p_email;
+                phone.value=p_phone;
+                address.value=p_address;
+                dob.value=p_dob;
+            }
             Name.setAttribute('readonly',true);
             Dob.setAttribute('readonly',true);
             Email.setAttribute('readonly',true);
             Phone.setAttribute('readonly',true);
             Address.setAttribute('readonly',true);
-            update_profile();
         }
-    });
-    function update_profile(){
-        const name=Name.innerHTML;
-        const email=Email.innerHTML;
-        const phone=Phone.innerHTML;
-        const address=Address.innerHTML;
-        const dob=Dob.innerHTML;
-
-        const xhttp = new XMLHttpRequest();
-        xhttp.onload = function() {
-            document.getElementsById("name").innerHTML = "hihi";
-        }
-        xhttp.open("PUT", "http://127.0.0.1:8000/user/update-profile");
+        xhttp.open("PUT", "update-profile");
         xhttp.send(`name=${name}&email=${email}&birthday=${dob}&address=${address}&phone=${phone}`);
     }
 </script>
+

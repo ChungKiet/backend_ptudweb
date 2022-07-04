@@ -6,7 +6,10 @@ class UserController {
 
    // [PUT] /users/update_profile ---> manager update
    async update_profile(req, res, next) {
+      console.log("new :\n" )
+      console.log(req.body);
       const { id, username, name, password, user_type, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
+     
       try {
          const user = await User.updateOne({ id: id}, {
             name, username, password, birthday, address, 
@@ -14,7 +17,7 @@ class UserController {
             updated_state
          });
          if (user.modifiedCount === 1) {
-            res.json({ "result": 1, "message": "Profile update Success" });
+            res.status(200).json({ "result": 1, "message": "Profile update Success" });
          }
          else {
             res.json({ "result": 0, "message": "Profile update Failed" });
@@ -83,6 +86,7 @@ class UserController {
             layout:'user-layout1.hbs',
             style:'user-profile.css',
             title:'Profile'
+            
          });
       }
       else {
