@@ -4,6 +4,8 @@ class ManagerController {
 
    // [POST] /manager/register --> Create new user (call for manager)
    async add_user(req, res, next) {
+      const userCount = await User.find({}).countDocuments();
+      
       if (!req.url.includes('?')) {
          console.log('req null');
          res.status(200).render('manager/manager-person-related-to-covid-info',{
@@ -16,17 +18,18 @@ class ManagerController {
       else{
          console.log("not null");
          // const { id,  name, user_type, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
-         const id = req.query.id;
-         const name = req.query.name;
-         const user_type = 'user';
-         const birthday = req.query.birthday;
-         const address = req.query.address;
-         const email = req.query.email;
-         const phone = req.query.phone;
+         const name = req.body.name;
+         const user_type = 'user' || req.body.user_type;
+         const birthday = req.body.birthday;
+         const address = req.body.address;
+         const email = req.body.email;
+         const phone = req.body.phone;
          const min_exchange = 0;
          const quarantine_state = 0;
          const updated_state = "2001-01-01T00:00:00.000Z";
+         const cmnd = req.body.cmnd;
          const password = "0000";
+         const id = 'F' + quarantine_state + '_' + userCount;
          const username = id;
          const userExists = await User.findOne({ id : id });
          if (userExists) {
@@ -34,8 +37,8 @@ class ManagerController {
                   "msg": 3, 'user': null
                });
          }
-         const user = await User.create({id, username, name, password, user_type, birthday, address, email, phone, min_exchange, quarantine_state, updated_state });
-         // res.send({ "msg": 1, 'user': user });
+         const user = await User.create({id, username, name, password, user_type, birthday, address, email, phone, cmnd, min_exchange, quarantine_state, updated_state });
+         res.send({ "msg": 1, 'user': user });
 
          res.status(200).render('manager/manager-add-people-related-to-covid',{
             message: 1,
@@ -82,7 +85,7 @@ class ManagerController {
       const page = Number(req.query.page) || 1;
       const from = (page - 1) * 4;
       const to = page * 4;
-      const userFind = User.find({}).lean();
+      const userFind = User.find({user_type: 'manager'}).lean();
       const movH = MovementHis.find({});
       let movHis = {};
       for (let i = 0; i < movH.countDocuments(); i++){
