@@ -6,10 +6,10 @@ class ManagerController {
    async add_user(req, res, next) {
       const { name, user_type, birthday, address, email, phone, cmnd, min_exchange, quarantine_state, updated_state } = req.body;
       const password = "0000";
+      const id = 'F' + quarantine_state + '_' + userCount;
       const username = id;
       const userExists = await User.findOne({ id : id });
       const userCount = await User.find({}).countDocuments();
-      const id = 'F' + quarantine_state + '_' + userCount;
       if (userExists) {
             res.send({
                "msg": 3, 'user': null
