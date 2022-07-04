@@ -4,37 +4,49 @@ class ManagerController {
 
    // [POST] /manager/register --> Create new user (call for manager)
    async add_user(req, res, next) {
-      // const { id,  name, user_type, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
-      const id = req.body.id;
-      const name = req.body.name;
-      const user_type = 'user';
-      const birthday = req.body.birthday;
-      const address = req.body.address;
-      const email = req.body.email;
-      const phone = req.body.phone;
-      const min_exchange = 0;
-      const quarantine_state = 0;
-      const updated_state = "2001-01-01T00:00:00.000Z";
-      const password = "0000";
-      const username = id;
-      const userExists = await User.findOne({ id : id });
-      if (userExists) {
-            res.send({
-               "msg": 3, 'user': null
-            });
+      if (!req.url.includes('?')) {
+         console.log('req null');
+         res.status(200).render('manager/manager-person-related-to-covid-info',{
+            message: 1,
+            layout:'layout1.hbs',
+            style:'../../css/manager-person-related-to-covid-info.css',
+            title:'Thêm người liên quan Covid'
+         });
+      }
+      else{
+         console.log("not null");
+         // const { id,  name, user_type, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
+         const id = req.query.id;
+         const name = req.query.name;
+         const user_type = 'user';
+         const birthday = req.query.birthday;
+         const address = req.query.address;
+         const email = req.query.email;
+         const phone = req.query.phone;
+         const min_exchange = 0;
+         const quarantine_state = 0;
+         const updated_state = "2001-01-01T00:00:00.000Z";
+         const password = "0000";
+         const username = id;
+         const userExists = await User.findOne({ id : id });
+         if (userExists) {
+               res.send({
+                  "msg": 3, 'user': null
+               });
          }
-      // try {
          const user = await User.create({id, username, name, password, user_type, birthday, address, email, phone, min_exchange, quarantine_state, updated_state });
-         res.send({ "msg": 1, 'user': user });
+         // res.send({ "msg": 1, 'user': user });
 
-      // }
-      // catch (err) {
-      //    res.status(401).send({
-      //       "msg": 0, 'user': null
-      //    });
+         res.status(200).render('manager/manager-add-people-related-to-covid',{
+            message: 1,
+            layout:'layout1.hbs',
+            style:'../../css/manager-add-people-related-to-covid.css',
+            title:'Danh sách người liên quan Covid'
+         });
 
-      // }
-
+      }
+      
+   
    }
 
    //new user form
