@@ -1,156 +1,136 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/user-product.css">
-    <link rel="stylesheet" href="css/flip-card.css">
-    
-    <title>Sản phẩm</title>
-</head>
-<body>
-    <div class="container-fluid">
-        <header class="d-flex flex-row shadow">
-            <h1>COVID-19</h1>
-            <div id="profile-area" class="">
-                <p id="username">Nguyễn Văn A</p>
-                <div class="pb-3">
-                    <i class="fa-solid fa-user "></i>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-infor dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="user-order.html">Đơn mua</a></li>
-                          <li><a class="dropdown-item" href="user-profile.html">Hồ sơ cá nhân</a></li>
-                          <li><a class="dropdown-item" href="budget.html">Tài khoản thanh toán</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="index.html">Đăng xuất</a></li>
-                        </ul>
+<div class="container-fluid">
+  <header class="d-flex flex-row shadow">
+      <h1>COVID-19</h1>
+      <div id="profile-area" class="">
+          <p id="username">Nguyễn Văn A</p>
+          <div class="pb-3">
+              <i class="fa-solid fa-user "></i>
+              <div class="btn-group">
+                  <button type="button" class="btn btn-infor dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="user-order.html">Đơn mua</a></li>
+                    <li><a class="dropdown-item" href="get-profile">Hồ sơ cá nhân</a></li>
+                    <li><a class="dropdown-item" href="budget.html">Tài khoản thanh toán</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="/">Đăng xuất</a></li>
+                  </ul>
+                </div>
+          </div>
+      </div>
+  </header>
+  <div class="main">
+    <aside class="shadow">
+        <h2 id="page-address">Sản phẩm</h2>
+        <div class="btn-group my-3">
+            <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><b> Sắp xếp theo:</b> 
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Giá thấp</a></li>
+                <li><a class="dropdown-item" href="#">Giá cao</a></li>
+                <li><a class="dropdown-item" href="#">Bán chạy</a></li>
+            </ul>
+          </div>
+        <p><b>Bộ lọc</b></p>
+        <form action="#">
+            <label class="" for="exp">Thời hạn: </label>
+            <input id="exp" name="exp" type="number" class="my-2">
+            <label for="price">Giá từ: </label>
+            <input id="min-price" name="price" type="number" min="0" class="mt-2">
+            <input name="max-price" type="number" min="0" class="my-3">
+            <button id="btn-filter-submit" class="btn btn-light shadow-sm" type="submit" >Áp dụng</button>
+        </form>
+    </aside>
+    <div class="product-area">
+      <div class="search-bar shadow px-5">
+          <form class="search-form w-75 my-2 ps-4 rounded-pill shadow">
+              <input class="form-control border-0" type="search" placeholder="Nhập tên gói sản phẩm muốn tìm kiếm" aria-label="Search" autocomplete>
+              <button class="btn" type="submit" class="float-end"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </form>
+          <a id="shopping-cart"  class="btn btn-light my-2" href="user-shopping-cart.html" type="submit"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a>
+      </div>
+      <div class="sort-bar py-3"></div>
+      <div class="bg-white px-5 py-2">
+          <div class="row products">
+              <div class="col-lg-3 col-md-6 col-sm-12 my-1">
+                <div id="product" class="d-flex flex-column justify-content-center align-items-center shadow">
+                  <div class="flip-card m-3">
+                      <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                          <a href="user-product-details.html"><img src="images/brush-0.jpg" alt="Avatar" style="width:200px;height:200px;"></a>
+                        </div>
+                        <div class="flip-card-back">
+                          <a href="user-product-details.html"><img src="images/brush-1.jpg" alt="Avatar" style="width:200px;height:200px;"></a>
+                        </div>
                       </div>
-                </div>
-            </div>
-        </header>
-        <div class="main">
-            <aside class="shadow">
-                <h2 id="page-address">Sản phẩm</h2>
-                <div class="btn-group my-3">
-                    <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><b> Sắp xếp theo:</b> 
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Giá thấp</a></li>
-                        <li><a class="dropdown-item" href="#">Giá cao</a></li>
-                        <li><a class="dropdown-item" href="#">Bán chạy</a></li>
-                    </ul>
+                    </div>
+                  <div class="text d-flex flex-column justify-content-center align-items-center ">
+                    <h3><a href="user-product-details.html" class="text-decoration-none text-black">Bàn chải đánh răng</a></h3>
+                    <p class="price text-danger">đ 150000</p>
+                    <p class="buttons"><a href="#" class="btn btn-light shadow-sm"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
                   </div>
-                <p><b>Bộ lọc</b></p>
-                <form action="#">
-                    <label class="" for="exp">Thời hạn: </label>
-                    <input id="exp" name="exp" type="number" class="my-2">
-                    <label for="price">Giá từ: </label>
-                    <input id="min-price" name="price" type="number" min="0" class="mt-2">
-                    <input name="max-price" type="number" min="0" class="my-3">
-                    <button id="btn-filter-submit" class="btn btn-light shadow-sm" type="submit" >Áp dụng</button>
-                </form>
-               
-            </aside>
-            <div class="product-area">
-                <div class="search-bar shadow px-5">
-                    <form class="search-form w-75 my-2 ps-4 rounded-pill shadow">
-                        <input class="form-control border-0" type="search" placeholder="Nhập tên gói sản phẩm muốn tìm kiếm" aria-label="Search" autocomplete>
-                        <button class="btn" type="submit" class="float-end"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </form>
-                    <a id="shopping-cart"  class="btn btn-light my-2" href="user-shopping-cart.html" type="submit"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a>
                 </div>
-                <div class="sort-bar py-3">
-                    
-                </div>
-                <div class="bg-white px-5 py-2">
-                    <div class="row products">
-                        <div class="col-lg-3 col-md-6 col-sm-12 my-1">
-                          <div id="product" class="d-flex flex-column justify-content-center align-items-center shadow">
-                            <div class="flip-card m-3">
-                                <div class="flip-card-inner">
-                                  <div class="flip-card-front">
-                                    <a href="user-product-details.html"><img src="images/brush-0.jpg" alt="Avatar" style="width:200px;height:200px;"></a>
-                                  </div>
-                                  <div class="flip-card-back">
-                                    <a href="user-product-details.html"><img src="images/brush-1.jpg" alt="Avatar" style="width:200px;height:200px;"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            <div class="text d-flex flex-column justify-content-center align-items-center ">
-                              <h3><a href="user-product-details.html" class="text-decoration-none text-black">Bàn chải đánh răng</a></h3>
-                              <p class="price text-danger">đ 150000</p>
-                              <p class="buttons"><a href="#" class="btn btn-light shadow-sm"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
-                            </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 my-1">
+                  <div id="product" class="d-flex flex-column justify-content-center align-items-center shadow">
+                    <div class="flip-card m-3">
+                        <div class="flip-card-inner">
+                          <div class="flip-card-front">
+                            <a href="user-product-details.html"><img src="images/ebrush-0.jpg" alt="Avatar" style="width:200px;height:200px;"></a>
+                          </div>
+                          <div class="flip-card-back">
+                            <a href="user-product-details.html"><img src="images/ebrush-1.jpg" alt="Avatar" style="width:200px;height:200px;"></a>
                           </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12 my-1">
-                            <div id="product" class="d-flex flex-column justify-content-center align-items-center shadow">
-                              <div class="flip-card m-3">
-                                  <div class="flip-card-inner">
-                                    <div class="flip-card-front">
-                                      <a href="user-product-details.html"><img src="images/ebrush-0.jpg" alt="Avatar" style="width:200px;height:200px;"></a>
-                                    </div>
-                                    <div class="flip-card-back">
-                                      <a href="user-product-details.html"><img src="images/ebrush-1.jpg" alt="Avatar" style="width:200px;height:200px;"></a>
-                                    </div>
-                                  </div>
-                                </div>
-                              <div class="text d-flex flex-column justify-content-center align-items-center ">
-                                <h3><a href="user-product-details.html" class="text-decoration-none text-black">Bàn chải điện</a></h3>
-                                <p class="price text-danger">đ 200  0000</p>
-                                <p class="buttons"><a href="#" class="btn btn-light shadow-sm"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-lg-3 col-md-6 col-sm-12 my-1">
-                            <div id="product" class="d-flex flex-column justify-content-center align-items-center shadow">
-                              <div class="flip-card m-3">
-                                  <div class="flip-card-inner">
-                                    <div class="flip-card-front">
-                                      <a href="user-product-details.html"><img src="images/dove-0.jpg" alt="Avatar" style="width:200px;height:200px;"></a>
-                                    </div>
-                                    <div class="flip-card-back">
-                                      <a href="user-product-details.html"><img src="images/dove-1.jpg" alt="Avatar" style="width:200px;height:200px;"></a>
-                                    </div>
-                                  </div>
-                                </div>
-                              <div class="text d-flex flex-column justify-content-center align-items-center ">
-                                <h3><a href="user-product-details.html" class="text-decoration-none text-black">Gucci Flora</a></h3>
-                                <p class="price text-danger">đ 1500000</p>
-                                <p class="buttons"><a href="#" class="btn btn-light shadow-sm"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-lg-3 col-md-4 col-sm-6 my-1">
-                            <div id="product" class="d-flex flex-column justify-content-center align-items-center shadow">
-                              <div class="flip-card m-3">
-                                  <div class="flip-card-inner">
-                                    <div class="flip-card-front">
-                                      <a href="user-product-details.html"><img src="images/toothpaste-0.jpg" alt="Avatar" style="width:200px;height:200px;"></a>
-                                    </div>
-                                    <div class="flip-card-back">
-                                      <a href="user-product-details.html"><img src="images/toothpaste-1.jpg" alt="Avatar" style="width:200px;height:200px;"></a>
-                                    </div>
-                                  </div>
-                                </div>
-                              <div class="text d-flex flex-column justify-content-center align-items-center ">
-                                <h3><a href="user-product-details.html" class="text-decoration-none text-black">Kem đánh răng</a></h3>
-                                <p class="price text-danger">đ 98000</p>
-                                <p class="buttons"><a href="#" class="btn btn-light shadow-sm"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
-                              </div>
-                            </div>
-                          </div>
-                        
+                      </div>
+                    <div class="text d-flex flex-column justify-content-center align-items-center ">
+                      <h3><a href="user-product-details.html" class="text-decoration-none text-black">Bàn chải điện</a></h3>
+                      <p class="price text-danger">đ 200  0000</p>
+                      <p class="buttons"><a href="#" class="btn btn-light shadow-sm"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
                     </div>
+                  </div>
                 </div>
-            </div>
-        </div>    
+                <div class="col-lg-3 col-md-6 col-sm-12 my-1">
+                  <div id="product" class="d-flex flex-column justify-content-center align-items-center shadow">
+                    <div class="flip-card m-3">
+                        <div class="flip-card-inner">
+                          <div class="flip-card-front">
+                            <a href="user-product-details.html"><img src="images/dove-0.jpg" alt="Avatar" style="width:200px;height:200px;"></a>
+                          </div>
+                          <div class="flip-card-back">
+                            <a href="user-product-details.html"><img src="images/dove-1.jpg" alt="Avatar" style="width:200px;height:200px;"></a>
+                          </div>
+                        </div>
+                      </div>
+                    <div class="text d-flex flex-column justify-content-center align-items-center ">
+                      <h3><a href="user-product-details.html" class="text-decoration-none text-black">Gucci Flora</a></h3>
+                      <p class="price text-danger">đ 1500000</p>
+                      <p class="buttons"><a href="#" class="btn btn-light shadow-sm"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 my-1">
+                  <div id="product" class="d-flex flex-column justify-content-center align-items-center shadow">
+                    <div class="flip-card m-3">
+                        <div class="flip-card-inner">
+                          <div class="flip-card-front">
+                            <a href="user-product-details.html"><img src="images/toothpaste-0.jpg" alt="Avatar" style="width:200px;height:200px;"></a>
+                          </div>
+                          <div class="flip-card-back">
+                            <a href="user-product-details.html"><img src="images/toothpaste-1.jpg" alt="Avatar" style="width:200px;height:200px;"></a>
+                          </div>
+                        </div>
+                      </div>
+                    <div class="text d-flex flex-column justify-content-center align-items-center ">
+                      <h3><a href="user-product-details.html" class="text-decoration-none text-black">Kem đánh răng</a></h3>
+                      <p class="price text-danger">đ 98000</p>
+                      <p class="buttons"><a href="#" class="btn btn-light shadow-sm"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
+                    </div>
+                  </div>
+                </div>
+              
+          </div>
+      </div>
     </div>
-    <script src="https://kit.fontawesome.com/1de341d6e9.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-</body>
-</html>
+  </div>    
+</div>

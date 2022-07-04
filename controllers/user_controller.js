@@ -65,21 +65,35 @@ class UserController {
    async login(req, res, next) {
       const { username, password } = req.body;
       const user = await User.findOne({ username: username });
-      if (!user) {
-         res.send({
-            "isLogin": 2, "user": null
-         });
-      }
-      else if (user.password === password) {
-         res.send({
-            "isLogin": 1, "user": user
-         });
-      }
-      else {
-         res.send({
-            "isLogin": 3, "user": null
-         });
-      }
+      res.status(200).render('user/user-product',{
+         layout:'user-layout',
+         style:'user-product.css',
+         title:'Product'
+      });
+      // if (!user) {
+      //    res.send({
+      //       "isLogin": 2, "user": null
+      //    });
+      // }
+      // else if (user.password === password) {
+      //    res.status(200).render('user/user-product',{
+      //       style:'user-profile.css',
+      //       title:'Product'
+      //    });
+      // }
+      // else {
+      //    res.send({
+      //       "isLogin": 3, "user": null
+      //    });
+      // }
+   }
+   // [GET] /user/product
+   async user_product(req, res, next) {
+      res.status(200).render('user/user-product',{
+         layout:'user-layout',
+         style:'user-product.css',
+         title:'Product'
+      });
    }
 
    // [GET] /users/get-profile
@@ -96,7 +110,7 @@ class UserController {
             user: user,
             vaccine_history: vaccineHis,
             movement_history: mov_his, 
-            layout:'layout1.hbs',
+            layout:'user-layout1.hbs',
             style:'user-profile.css',
             title:'Profile'
          });
@@ -110,6 +124,8 @@ class UserController {
          });
       }
    }
+   
 }
+
 
 module.exports = new UserController;
