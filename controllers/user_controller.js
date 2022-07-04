@@ -36,11 +36,11 @@ class UserController {
 
    // [PUT] /users/update_profile ---> manager update
    async update_profile(req, res, next) {
-      const { id, username, name, password, user_type, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
+      const { id, username, name, password, user_type, birthday, address, email, phone, cmnd, min_exchange, quarantine_state, updated_state } = req.body;
       try {
          const user = await User.updateOne({ id: id}, {
             name, username, password, birthday, address, 
-            user_type, email, phone, min_exchange, quarantine_state,
+            user_type, email, phone, cmnd, min_exchange, quarantine_state,
             updated_state
          });
          if (user.modifiedCount === 1) {

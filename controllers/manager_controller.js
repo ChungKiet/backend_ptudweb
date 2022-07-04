@@ -4,27 +4,29 @@ class ManagerController {
 
    // [POST] /manager/register --> Create new user (call for manager)
    async add_user(req, res, next) {
-      const { id,  name, user_type, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
-      console.log(id, username,  name, password, "Testsererojoajidso")
+      const { name, user_type, birthday, address, email, phone, cmnd, min_exchange, quarantine_state, updated_state } = req.body;
       const password = "0000";
       const username = id;
       const userExists = await User.findOne({ id : id });
+      const userCount = await User.find({}).countDocuments();
+      const id = 'F' + quarantine_state + '_' + userCount;
       if (userExists) {
             res.send({
                "msg": 3, 'user': null
             });
          }
-      // try {
-         const user = await User.create({id, username, name, password, user_type, birthday, address, email, phone, min_exchange, quarantine_state, updated_state });
+      try {
+         const user = await User.create({id, username, name, password, user_type, birthday, address, email, 
+            phone, cmnd, min_exchange, quarantine_state, updated_state });
          res.send({ "msg": 1, 'user': user });
 
-      // }
-      // catch (err) {
-      //    res.status(401).send({
-      //       "msg": 0, 'user': null
-      //    });
+      }
+      catch (err) {
+         res.status(401).send({
+            "msg": 0, 'user': null
+         });
 
-      // }
+      }
 
    }
 
