@@ -3,7 +3,9 @@ const route = express.Router();
 
 const ManagerController = require('../controllers/manager_controller')
 
-route.get('/add-user', ManagerController.add_user);;
+route.get('/add-user', ManagerController.add_user);
+
+route.get('/new-user-form', ManagerController.new_user_form);
 
 route.get('/get-all-user', ManagerController.get_all_user);
 

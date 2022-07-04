@@ -54,148 +54,39 @@
             </aside>
             <div id="content">
                 <div>
-                    <a id="add-person-btn" class="btn text-white rounded-pill" href="manager-person-related-to-covid-info.htm">+ Thêm người</a>
+                    <a id="add-person-btn" class="btn text-white rounded-pill" href="add-user">+ Thêm người</a>
                 </div>
                 <div id="list-of-people">
                     
+                    {{#each user}}
+                    <div class="person-info-display  d-flex flex-row ">
+                        <img class="person-avatar" src="../../images/empty_avatar.jpg" alt="ảnh chân dung">
+                        <div class="person-text-info mx-5">
+                            <h6 class="person-name-age"><span>{{name}}</span> </h6>
+                            <p class="person-hometown">Địa chỉ cư trú: <span>{{address}}</span></p>
+                            <a class="to-person-travel-history btn" href="manager-travel-history.htm">Xem lịch sử di chuyển</a>
+                            <a class="to-personal-info btn" href="manager-person-related-to-covid-info.htm">Xem thông tin cá nhân</a>
+                        </div>
+                        <hr width="1" size="100%">
+                        <div class="additional-personal-info container row">
+                            <div class="addition-info-1 col-lg-6 col-md-12">
+                                <h6>Địa điểm cuối cùng đã đến</h6>
+                                <ul class="last-known-place">
+                                    {{#each movHis}}
+                                    <li>{{address}}</li>
+                                    {{/each}}
+                                </ul>
+                                <a class="more-info" href="manager-travel-history.htm">+Chi tiết</a>
 
+                            </div>
+                            
+    
+                        </div>
+                        
+                    </div>
+                    <hr>
+                    {{/each}}
                     
-                    <div class="person-info-display  d-flex flex-row ">
-                        <img class="person-avatar" src="../../images/empty_avatar.jpg" alt="ảnh chân dung">
-                        <div class="person-text-info mx-5">
-                            <h6 class="person-name-age"><span>Nguyễn Văn AAA</span>, <span>20</span> tuổi</h6>
-                            <p class="person-hometown">Địa chỉ cư trú: <span>phường A, quận B, thành phố C, tỉnh D</span></p>
-                            <a class="to-person-travel-history btn" href="manager-travel-history.htm">Xem lịch sử di chuyển</a>
-                            <a class="to-personal-info btn" href="manager-person-related-to-covid-info.htm">Xem thông tin cá nhân</a>
-                        </div>
-                        <hr width="1" size="100%">
-                        <div class="additional-personal-info container row">
-                            <div class="addition-info-1 col-lg-6 col-md-12">
-                                <h6>Địa điểm cuối cùng đã đến</h6>
-                                <ul class="last-known-place">
-                                    <li>xyz đường ABC</li>
-                                    <li>chung cư AAA khu BBB</li>
-                                    <li>trường ABCXYZ</li>
-                                </ul>
-                                <a class="more-info" href="manager-travel-history.htm">+Chi tiết</a>
-    
-                            </div>
-                            <div class="addition-info-1 col-lg-6 col-md-12">
-                                <h6>Người tiếp xúc cuối cùng</h6>
-                                <ul class="last-people-in-contact">
-                                    <li>Simon Baker</li>
-                                    <li>Jonny Lee Miller</li>
-                                    <li>Travis Fimmel</li>
-                                </ul>
-                                <a class="more-info" href="manager-travel-history.htm">+Chi tiết</a>
-                            </div>
-    
-                        </div>
-                        
-                    </div>
-                    <hr>
-                    <div class="person-info-display  d-flex flex-row ">
-                        <img class="person-avatar" src="../../images/empty_avatar.jpg" alt="ảnh chân dung">
-                        <div class="person-text-info mx-5">
-                            <h6 class="person-name-age"><span>Trần Thị B</span>, <span>30</span> tuổi</h6>
-                            <p class="person-hometown">Địa chỉ cư trú: <span>phường A, quận B, thành phố C, tỉnh D</span></p>
-                            <a class="to-person-travel-history btn" href="manager-travel-history.htm">Xem lịch sử di chuyển</a>
-                            <a class="to-personal-info btn" href="manager-person-related-to-covid-info.htm">Xem thông tin cá nhân</a>
-                        </div>
-                        <hr width="1" size="100%">
-                        <div class="additional-personal-info container row">
-                            <div class="addition-info-1 col-lg-6 col-md-12">
-                                <h6>Địa điểm cuối cùng đã đến</h6>
-                                <ul class="last-known-place">
-                                    <li>xyz đường ABC</li>
-                                    <li>chung cư AAA khu BBB</li>
-                                    <li>trường ABCXYZ</li>
-                                </ul>
-                                <a class="more-info" href="manager-travel-history.htm">+Chi tiết</a>
-    
-                            </div>
-                            <div class="addition-info-1 col-lg-6 col-md-12">
-                                <h6>Người tiếp xúc cuối cùng</h6>
-                                <ul class="last-people-in-contact">
-                                    <li>Simon Baker</li>
-                                    <li>Jonny Lee Miller</li>
-                                    <li>Travis Fimmel</li>
-                                </ul>
-                                <a class="more-info" href="manager-travel-history.htm">+Chi tiết</a>
-                            </div>
-    
-                        </div>
-                        
-                    </div>
-                    <hr>
-                    <div class="person-info-display  d-flex flex-row ">
-                        <img class="person-avatar" src="../../images/empty_avatar.jpg" alt="ảnh chân dung">
-                        <div class="person-text-info mx-5">
-                            <h6 class="person-name-age"><span>Đỗ Quang C</span>, <span>25</span> tuổi</h6>
-                            <p class="person-hometown">Địa chỉ cư trú: <span>phường A, quận B, thành phố C, tỉnh D</span></p>
-                            <a class="to-person-travel-history btn" href="manager-travel-history.htm">Xem lịch sử di chuyển</a>
-                            <a class="to-personal-info btn" href="manager-person-related-to-covid-info.htm">Xem thông tin cá nhân</a>
-                        </div>
-                        <hr width="1" size="100%">
-                        <div class="additional-personal-info container row">
-                            <div class="addition-info-1 col-lg-6 col-md-12">
-                                <h6>Địa điểm cuối cùng đã đến</h6>
-                                <ul class="last-known-place">
-                                    <li>xyz đường ABC</li>
-                                    <li>chung cư AAA khu BBB</li>
-                                    <li>trường ABCXYZ</li>
-                                </ul>
-                                <a class="more-info" href="manager-travel-history.htm">+Chi tiết</a>
-    
-                            </div>
-                            <div class="addition-info-1 col-lg-6 col-md-12">
-                                <h6>Người tiếp xúc cuối cùng</h6>
-                                <ul class="last-people-in-contact">
-                                    <li>Simon Baker</li>
-                                    <li>Jonny Lee Miller</li>
-                                    <li>Travis Fimmel</li>
-                                </ul>
-                                <a class="more-info" href="manager-travel-history.htm">+Chi tiết</a>
-                            </div>
-    
-                        </div>
-                        
-                    </div>
-                    <hr>
-                    <div class="person-info-display  d-flex flex-row ">
-                        <img class="person-avatar" src="../../images/empty_avatar.jpg" alt="ảnh chân dung">
-                        <div class="person-text-info mx-5">
-                            <h6 class="person-name-age"><span>Trần D</span>, <span>50</span> tuổi</h6>
-                            <p class="person-hometown">Địa chỉ cư trú: <span>phường A, quận B, thành phố C, tỉnh D</span></p>
-                            <a class="to-person-travel-history btn" href="manager-travel-history.htm">Xem lịch sử di chuyển</a>
-                            <a class="to-personal-info btn" href="manager-person-related-to-covid-info.htm">Xem thông tin cá nhân</a>
-                        </div>
-                        <hr width="1" size="100%">
-                        <div class="additional-personal-info container row">
-                            <div class="addition-info-1 col-lg-6 col-md-12">
-                                <h6>Địa điểm cuối cùng đã đến</h6>
-                                <ul class="last-known-place">
-                                    <li>xyz đường ABC</li>
-                                    <li>chung cư AAA khu BBB</li>
-                                    <li>trường ABCXYZ</li>
-                                </ul>
-                                <a class="more-info" href="manager-travel-history.htm">+Chi tiết</a>
-    
-                            </div>
-                            <div class="addition-info-1 col-lg-6 col-md-12">
-                                <h6>Người tiếp xúc cuối cùng</h6>
-                                <ul class="last-people-in-contact">
-                                    <li>Simon Baker</li>
-                                    <li>Jonny Lee Miller</li>
-                                    <li>Travis Fimmel</li>
-                                </ul>
-                                <a class="more-info" href="manager-travel-history.htm">+Chi tiết</a>
-                            </div>
-    
-                        </div>
-                        
-                    </div>
-                    <hr>
                     
                     
                     
@@ -246,29 +137,36 @@
         }
         
         function previousList(){
-            var page_prev_index = parseInt(getParameterByName('page-index'), 10) - 1;
+            var page_prev_index = parseInt(getParameterByName('page'), 10) - 1;
             if(page_prev_index != null){
                 if(page_prev_index >= 1){
-                    var newURL = updateURLParameter(window.location.href, 'page-index', page_prev_index);
+                    var newURL = updateURLParameter(window.location.href, 'page', page_prev_index);
                     location.replace(newURL);     
                 }
             }
             else{
-                console.log("page-index is null");
+                console.log("page index is null");
 
             }
             
         }
         function nextList(){
-            var page_next_index = parseInt(getParameterByName('page-index'),10) + 1;
+            var page_next_index = parseInt(getParameterByName('page'),10) + 1;
             if(page_next_index != null){
-                var newURL = updateURLParameter(window.location.href, 'page-index', page_next_index);
+                var newURL = updateURLParameter(window.location.href, 'page', page_next_index);
                 location.replace(newURL);           
             }
             else{
-                console.log("page-index is null");
+                console.log("page index is null");
             }
 
         }
+    </script>
+    <script>
+        function getAge(){
+            var age = 1;
+            document.getElementById("age_display").textContent = age.toString();
+        }
+        getAge();
     </script>
 </body>
