@@ -38,13 +38,14 @@
             <td>{{role}}</td>
             <td>
               <a href="admin-history-account">
-                <img class="btn-func" src="../images/history-icon.png" action = "get_his_by_id" alt="history-account">
+                <img class="btn-func" src="../images/history-icon.png" action="get_his_by_id" alt="history-account">
               </a>
-              <img class="mx-3 btn-func" onclick="changeState()" src="../images/unlocked-icon.png" alt="unlocked-icon" id="stateButton">
+              <img class="mx-3 btn-func" onclick="changeState()" src="../images/unlocked-icon.png" alt="unlocked-icon"
+                id="stateButton">
             </td>
           </tr>
           {{/each}}
-        
+
         </tbody>
       </table>
       <div id="addAccountFrag" class="form-container">
@@ -53,7 +54,7 @@
         <div class="form-label text-center">
           <h2>Tài khoản</h2>
         </div>
-        <form id="form-account" class="inputform" action ="add_account_state">
+        <form id="form-account" class="inputform" action="add_account_state">
           <label for="username">Tài khoản</label>
           <input id="username" type="text" name="username" autocomplete="on" required>
           <label for="password">Mật khẩu</label>
@@ -68,14 +69,9 @@
       </div>
       <div id="list-of-resuls">
         <nav>
-          <a id="page-first" href="#"><b>&larr;</b></a>
-          <a id="page1" href="#">1</a>
-          <a id="page2" href="#">2</a>
-          <a id="page3" href="#">3</a>
-          <a id="page4" href="#">4</a>
-          <a id="page5" href="#">5</a>
+          <button id="page-previous" onclick="previousList()"><b>Trước</b></button>
           ...
-          <a id="page-last" href="#"><b>&rarr;</b></a>
+          <button id="page-next" onClick="nextList()"><b>Tiếp</b></button>
 
         </nav>
       </div>
@@ -96,7 +92,60 @@
 
     function changeState() {
       const state = document.getElementById("stateButton");
-      state.src="../images/unlocked-icon.png";
+      state.src = "../images/unlocked-icon.png";
+    }
+  </script>
+
+  <script>
+    function getParameterByName(name, url = window.location.href) {
+      name = name.replace(/[\[\]]/g, '\\$&');
+      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+    function updateURLParameter(url, param, paramVal) {
+      var newAdditionalURL = "";
+      var tempArray = url.split("?");
+      var baseURL = tempArray[0];
+      var additionalURL = tempArray[1];
+      var temp = "";
+      if (additionalURL) {
+        tempArray = additionalURL.split("&");
+        for (var i = 0; i < tempArray.length; i++) {
+          if (tempArray[i].split('=')[0] != param) {
+            newAdditionalURL += temp + tempArray[i];
+            temp = "&";
+          }
+        }
+      }
+      var rows_txt = temp + "" + param + "=" + paramVal;
+      return baseURL + "?" + newAdditionalURL + rows_txt;
+    }
+
+    function previousList() {
+      var page_prev_index = parseInt(getParameterByName('page-index'), 10) - 1;
+      if (page_prev_index != null) {
+        if (page_prev_index >= 1) {
+          var newURL = updateURLParameter(window.location.href, 'page-index', page_prev_index);
+          location.replace(newURL);
+        }
+      }
+      else {
+        console.log("page-index is null");
+      }
+
+    }
+    function nextList() {
+      var page_next_index = parseInt(getParameterByName('page-index'), 10) + 1;
+      if (page_next_index != null) {
+        var newURL = updateURLParameter(window.location.href, 'page-index', page_next_index);
+        location.replace(newURL);
+      }
+      else {
+        console.log("page-index is null");
+      }
     }
   </script>
 </body>

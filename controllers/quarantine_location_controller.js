@@ -75,9 +75,13 @@ class QuarantineLocController {
    // view all loc (limit per page)
    async view_all_loc(req, res, next){
       try {
+         const page = Number(req.query.page) || 1;
+         const from = (page - 1) * 10;
+         const to = page * 10;
+
          const quarantine_locs = await QuarantineLoc.find({}); // ignore this info
          if (quarantine_locs) {
-            res.json(quarantine_locs);
+            res.json(quarantine_locs.slice(from,to));
          }
          else {
             res.status(404).send({

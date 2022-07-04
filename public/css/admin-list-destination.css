@@ -263,7 +263,7 @@ form label{
     background-color: #609B53;
 }
 
-#form-account {
+#form-des {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -277,4 +277,10 @@ form label{
 .back-icon{
     width: 2em;
     height: 2em;
+}
+
+button{
+    border: none;
+    background-color: #FFF;
+    color: #609B53;
 }

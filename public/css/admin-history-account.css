@@ -179,3 +179,8 @@ th,
 td {
     padding-left: 20px !important;
 }
+button{
+    border: none;
+    background-color: #FFF;
+    color: #609B53;
+}
