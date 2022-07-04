@@ -1,8 +1,9 @@
 const QuarantineLoc = require('../models/quarantine_location')
 class QuarantineLocController {  
-
    async add_new_loc(req, res, next) {
-      const { id, name, address, capacity, amount, state } = req.body;
+      const {name, address, capacity, amount} = req.body;
+      const id = 'id' + (new Date()).getTime();
+      const state = true;
       const quarantine_loc = await QuarantineLoc.findOne({ id: id });
       if (quarantine_loc) {
             res.send({

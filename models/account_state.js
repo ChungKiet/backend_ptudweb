@@ -18,7 +18,7 @@ const accStateSchema = new mongoose.Schema({
       type: Number, required: true
    },
    state: {
-      type: Boolean, required: true, default: false
+      type: Boolean, required: true, default: true
    },
 });
 

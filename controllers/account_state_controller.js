@@ -3,7 +3,9 @@ const AccountState = require("../models/account_state");
 class AccStateController {
 
    async add_account_state(req, res, next) {
-      const { username, name, password, role, state } = req.body;
+      const { username, password, role } = req.body;
+      const name = "DefaultName";
+      const state = true;
       const acc_state = await AccountState.findOne({ username: username });
       if (acc_state) {
          res.send({

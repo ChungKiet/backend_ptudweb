@@ -38,7 +38,7 @@
             <td>{{role}}</td>
             <td>
               <a href="admin-history-account">
-                <img class="btn-func" src="../images/history-icon.png" alt="history-account">
+                <img class="btn-func" src="../images/history-icon.png" action = "get_his_by_id" alt="history-account">
               </a>
               <img class="mx-3 btn-func" onclick="changeState()" src="../images/unlocked-icon.png" alt="unlocked-icon" id="stateButton">
             </td>
@@ -53,7 +53,7 @@
         <div class="form-label text-center">
           <h2>Tài khoản</h2>
         </div>
-        <form id="form-account" class="inputform">
+        <form id="form-account" class="inputform" action ="add_account_state">
           <label for="username">Tài khoản</label>
           <input id="username" type="text" name="username" autocomplete="on" required>
           <label for="password">Mật khẩu</label>
@@ -82,25 +82,6 @@
     </div>
   </div>
   <script>
-    var form = document.getElementById('addAccount');
-    var accountList = document.getElementById('accounts');
-
-    form.addEventListener('addAccount', addAccount);
-    function addAccount() {
-      //var newItem = document.getElementById('item').value;
-      var row = accountList.insertRow();
-      var cell = row.insertCell();
-      cell.innerHTML = "stt";
-      cell = row.insertCell();
-      cell.innerHTML = "id";
-      cell = row.insertCell();
-      cell.innerHTML = "tai khoan";
-      cell = row.insertCell();
-      cell.innerHTML = "quyen";
-      cell = row.insertCell();
-      cell.outerHTML = '<td><a href="admin-history-account.html"> <img class="btn-func" src="../images/history-icon.png" alt="history-account"> </a>  <img class="mx-3 btn-func" onclick="" src="../images/unlocked-icon.png" alt="unlocked-icon"> </td>';
-    }
-
     function openPopUp() {
       const addAccountFrag = document.getElementById("addAccountFrag");
       addAccountFrag.style.display = 'block';
@@ -116,7 +97,6 @@
     function changeState() {
       const state = document.getElementById("stateButton");
       state.src="../images/unlocked-icon.png";
-      {{state}}
     }
   </script>
 </body>
