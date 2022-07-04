@@ -1,0 +1,157 @@
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- CSS only -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Changa+One&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="css/manager-pop-up-edit.css" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+   <title>Popup edit</title>
+</head>
+<body>
+   <header class="d-flex flex-row">
+      <h1>COVID-19</h1>
+      <nav id="toolbar">
+          <a class="mx-5" id="to-homepage" href="manager-add-people-related-to-covid.htm">Trang chủ</a>
+          <a class="mx-5" id="to-product-management" href="manager-set-of-product.html">Gói nhu yêu phẩm</a>
+      </nav>
+      <div class="dropdown me-5" id="satistic-pop-up">
+         <button class="dropbtn">Thống kê và quản lý </button>
+         <div class="dropdown-content">
+             <a href="manager-add-people-related-to-covid.htm">Quản lý người liên quan đến COVID</a>
+             <a href="manager-statistic-info.html">Thống kê số liệu</a>
+             <a href="manager-update-the-min-payment.html">Điều chỉnh mức thanh toán tối thiểu</a>
+         </div>
+     </div>
+
+      
+
+      <div id="profile-area" class="d-flex flex-row">
+          
+          <!-- <i class="fa-solid fa-user "></i> -->
+          <p id="username">Nguyễn Văn A</p>
+          <button id="btn-profile" class="border-0 bg-transparent"><i class="fa-solid fa-user"></i></button>
+
+          <div class="dropdown" id="account-menu-pop-up">
+              <button id="btn-profile" class="border-0 bg-transparent"><i class="fa-solid fa-caret-down"></i></button>
+              <div class="dropdown-content">
+                  <a href="manager-profile.htm">Tài khoản</a>
+                  <a href="index.html">Đăng xuất</a>
+              </div>
+          </div>
+      
+      </div>
+  </header>
+   <div class="container-fluid no-pad row">
+      <aside class="col-2 bg-navbar min-vh-100 text-center border-end border-dark">
+         <h2 class="aside-title">
+            Sản phẩm
+         </h2>
+         <h3 class="text-white"> Bộ lọc</h3>
+         <div class="text-black fit-content d-inline-block ps-2 border-radius-5">
+            <select class="form-select" aria-label="One">
+               <option selected>Lượt mua</option>
+               <option value="1">One</option>
+               <option value="2">Two</option>
+               <option value="3">Three</option>
+            </select>
+         </div>
+         <div class="text-black fit-content d-inline-block border-radius-5">
+            <select class="form-select" aria-label="One">
+               <option selected>Thời hạn</option>
+               <option value="1">One</option>
+               <option value="2">Two</option>
+               <option value="3">Three</option>
+            </select>
+         </div>
+         <div class="text-black fit-content mx-auto mt-3 border-radius-5">
+            <select class="form-select" aria-label="One">
+               <option selected>Giá</option>
+               <option value="1">One</option>
+               <option value="2">Two</option>
+               <option value="3">Three</option>
+             </select>
+         </div>
+      </aside>
+      <div class="col-10 no-pad">
+         <div class="row">
+            <div class="bg-item  col-4 m-3 p-2 over-flow-hidden ms-5">
+               <input type="text" placeholder="Nhập tên gói" class="bg-white border-radius-80 border-0 mb-2 p-2">
+               <!-- <div class="d-inline-block float-end"> Chỉnh sửa </div> -->
+               <div class="">
+                  <div class="">
+                     <div>
+                        <input type="text" placeholder="Số lượt mua" class="bg-white border-radius-80 mb-1 border-0 p-1 ps-2">
+                     </div>
+                  <div>
+                     <div class="text-black fit-content d-inline-block border-radius-80">
+                        <select class="form-select border-radius-80 px-4 pe-5" aria-label="One">
+                           <option selected>Thời gian giới hạn</option>
+                           <option value="1">1 tuần</option>
+                           <option value="2">2 tuần</option>
+                           <option value="3">3 tuần</option>
+                           <option value="4">4 tuần</option>
+                           
+                        </select>
+                     </div>
+                     <!-- <input type="text" placeholder="Thời gian giới hạn" class="bg-white border-radius-80 mb-1 border-0 p-1 ps-2"> -->
+                  </div>
+                  
+
+                  <div class="d-inline-block">
+                     <img src="images/sample-product.png" alt="Test image" class="m-1 d-inline-block">
+                     </div>
+                     <div class="d-inline-block">
+                        <button class="custom-background text-white border-radius-80 p-3 mt-2">Chọn ảnh</button>
+                     </div>
+                  </div>
+                  <div>
+                     <button class="bg-dark text-white border-radius-80 ps-4 pe-4">Hủy</button>
+                     <button class="custom-background text-white border-radius-80 ps-4 pe-4 ms-3">Lưu</button>
+                  </div>
+               </div>
+            </div>
+            <div class="btn-add-item col-3 mt-5 mx-auto p-2 ">
+               <h4><button class="bg-light-gray text-dark p-3 pt-4 border-radius-80 mt-5 row">Thêm sản phẩm
+                  <i class="fa-solid fa-circle-plus row"></i>
+               </button></h4>
+            </div>
+            <h3 class="ms-4">Danh sách các sản phẩm</h3>
+            <div class="bg-item  col-4 m-3 p-2 over-flow-hidden ms-5">
+               <!-- <h3 class="d-inline-block"> Kem đánh răng</h3> -->
+               <input type="text" placeholder="Nhập tên sản phẩm" class="bg-white border-radius-80 mb-2 border-0 p-2">
+               <div class="d-inline-block">
+                  <div class="d-inline-block ms-1">
+                     <input type="text" placeholder="Nhập giá" class="bg-white border-radius-80 mb-3 border-0 p-2 width-35 d-inline-block">
+                     <input type="text" placeholder="Số lượng giới hạn" class="bg-white border-radius-80 mb-3 border-0 p-2 d-inline-block">                     
+                  </div>
+                  </div>
+                  <div class="d-inline-block mt-3 mx-auto pe-auto">
+                     <i class='fas fa-angle-left' style='font-size:40px; margin-right: .4rem;'></i>
+                     <img src="images/sample-product.png" width="100" alt="Test image" class="ms-2 d-inline-block">      
+                     <img src="images/sample-product.png" width="100"alt="Test image" class="ms-2 d-inline-block">
+                     <img src="images/sample-product.png" width="100" alt="Test image" class="ms-2 d-inline-block">
+                     <i class='fas fa-angle-right' style='font-size:40px; margin-left: 1rem;'></i>
+                     <button class="custom-background text-white border-radius-80 ps-4 ms-5 m-3 pe-4 ms-3">Xóa</button>
+                     <button class="custom-background text-white border-radius-80 ps-4 m-3 pe-4 ms-3">Xóa</button>
+                     <button class="custom-background text-white border-radius-80 ps-4 m-3 pe-4 ms-3">Xóa</button>
+                     
+                  </div>
+                  <div class="text-center">
+                     <button class="bg-dark text-white border-radius-80 ps-4 pe-4">Hủy</button>
+                     <button class="custom-background text-white border-radius-80 ps-4 pe-4 ms-3">Lưu</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+   <script src="https://kit.fontawesome.com/413ef06077.js" crossorigin="anonymous"></script>
+</body>
+</html>

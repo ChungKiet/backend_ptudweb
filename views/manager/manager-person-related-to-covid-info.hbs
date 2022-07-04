@@ -1,0 +1,162 @@
+<body>
+    <div class="container-fluid">
+        <header class="d-flex flex-row">
+            <h1>COVID-19</h1>
+            <nav id="toolbar">
+                <a class="mx-5" id="to-homepage" href="manager-add-people-related-to-covid.htm">Trang chủ</a>
+                <a class="mx-5" id="to-product-management" href="manager-set-of-product.html">Gói nhu yêu phẩm</a>
+            </nav>
+            <div class="dropdown me-5" id="satistic-pop-up">
+                <button class="dropbtn">Thống kê và quản lý </button>
+                <div class="dropdown-content">
+                    <a href="manager-add-people-related-to-covid.htm">Quản lý người liên quan đến COVID</a>
+                    <a href="manager-statistic-chart.html">Thống kê số liệu</a>
+                    <a href="manager-update-the-min-payment.html">Điều chỉnh mức thanh toán tối thiểu</a>
+                </div>
+            </div>
+
+            
+
+            <div id="profile-area" class="d-flex flex-row">
+                
+                <!-- <i class="fa-solid fa-user "></i> -->
+                <p id="username">Nguyễn Văn A</p>
+                <button id="btn-profile" class="border-0 bg-transparent"><i class="fa-solid fa-user"></i></button>
+
+                <div class="dropdown" id="account-menu-pop-up">
+                    <button id="btn-profile" class="border-0 bg-transparent"><i class="fa-solid fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="manager-profile.htm">Tài khoản</a>
+                        <a href="index.html">Đăng xuất</a>
+                    </div>
+                </div>
+            
+            </div>
+        </header>
+        <div class="main">
+            <aside>
+                
+            </aside>
+            <div id="content">
+                <h3>Thêm mới người liên quan đến dịch bệnh Covid</h3>
+                <img id="person-avatar" src="../../images/empty_avatar.jpg" alt="avatar" class="btn btn-success rounded-pill">
+                <div id="travel-history-display" class="ms-5 me-5 info-block">
+                    
+                    <h5>Thông tin cơ bản</h5>
+                    {{!-- <form id="person-report" action="manager-add-people-related-to-covid.htm"> --}}
+                    <form id="person-report" action="add-user" method="get">
+                    </form>
+                    
+
+                    
+                    
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12">
+                            <label for="name">Họ và tên (ghi chữ IN HOA) <b>(*)</b></label><br>
+                            <input name="name" type="text" id="fullname" form="person-report" class="input-box">
+
+                        </div>
+
+
+                        <div class="col-lg-6 col-md-12">
+                            <label for="id">Số hộ chiếu/CMND/CCCD <b>(*)</b></label><br>
+                            <input name="id" id="citizen-ID" type="text" form="person-report" class="input-box">
+                            </input>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <label for="birthday">Ngày tháng năm sinh <b>(*)</b></label><br>
+                            <input name="birthday" id = "year-born" type="date" form="person-report" class="three-row-input-box">
+    
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div id="sex-options">
+                                <label>Giới tính <b>(*)</b></label><br>
+                                <input name="sex" id="sex" type="radio" value="male" form="person-report" class="three-row-input-box">
+                                <label for="sex">Nam</label>
+                                <input name="sex" id="sex" type="radio" value="female" form="person-report" class="three-row-input-box">
+                                <label for="sex">Nữ</label>
+                                <input name="sex" id="sex" type="radio" value="diff" form="person-report" class="three-row-input-box">
+                                <label for="sex">Khác</label>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <label for="nationality">Quốc tịch <b>(*)</b></label><br>
+                            <select name="nationality" id="nationality" form="person-report" class="three-row-input-box">
+                                <option value="">-Chọn</option>
+                                <option value="Việt Nam">Việt Nam</option>
+                                <option value="Trung Quốc">Trung Quốc</option>
+                                <option value="Mỹ">Mỹ</option>
+                                <option value="Anh">Anh</option>
+                                <option value="Pháp">Pháp</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div id="contact-info" class="ms-5 me-5 info-block">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <label for="home-city">Tỉnh thành <b>(*)</b></label><br>
+                            <input name="home-city" id="home-city" type="text" form="person-report" class="input-box">
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <label for="home-district">Quận/huyện <b>(*)</b></label><br>
+                            <input name="home-district" id="home-district" type="text" form="person-report" class="input-box">
+                            
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <label for="home-town">Phường/xã <b>(*)</b></label><br>
+                            <input name="home-town" id="home-town" type="text" form="person-report" class="input-box">
+                            
+                        </div>
+                    </div>
+                    <label for="address">Số nhà, phố, tổ dân phố/thôn/đội <b>(*)</b></label>
+                    <input name="address" id="address" type="text" form="person-report" class="input-box">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12">
+                            <label for="phone">Số điện thoại <b>(*)</b></label><br>
+                            <input name="phone" id="phone" type="number" form="person-report" class="input-box">
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <label for="email">Email</label><br>
+                            <input name="email" id="email" type="email" form="person-report" class="input-box">
+                            
+                        </div>
+                       
+                    </div>
+                    <p><strong>Trong vòng 14 ngày qua, đối tượng có đến tỉnh/thành phố, quốc gia/vùng lãnh thổ nào (Có thể đi qua nhiều nơi) ? </strong></p>
+                    <div class="group-answer">
+                        <input name="travel-around" id="travel-around" type="radio" value="yes" form="person-report" >
+                        <label for="travel-around">Có</label><br>
+                        <input name="travel-around" id="travel-around" type="radio" value="no" form="person-report" >
+                        <label for="travel-around">Không</label><br>
+                    </div>
+                    <p><strong>Trong vòng 14 ngày qua, đối tượng có xuất hiện ít nhất 1 trong các dấu hiệu: sốt, ho, khó thở, viêm phổi, đau họng, mệt mỏi không ? </strong></p>
+                    <div class="group-answer">
+                        <input name="have-symptoms" id="have-symptoms" type="radio" value="yes" form="person-report">
+                        <label for="have-symptoms">Có</label><br>
+                        <input name="have-symptoms" id="have-symptoms" type="radio" value="no" form="person-report" >
+                        <label for="have-symptoms">Không</label><br>
+                    </div>
+                    <p><strong>Trong vòng 14 ngày qua, đối tượng có tiếp xúc với ... </strong><b>(*)</b></p>
+                    <div class="group-answer">
+                        <input name="people-in-contact" id="people-in-contact" type="checkbox" value="in-suspect" form="person-report">
+                        <label for="people-in-contact">Người bệnh hoặc nghi ngờ, mắc bệnh COVID-19</label><br>
+                        <input name="people-in-contact" id="people-in-contact" type="checkbox" value="from-pandemic-country" form="person-report" >
+                        <label for="people-in-contact">Người từ nước có bệnh COVID-19</label><br>
+                        <input name="people-in-contact" id="people-in-contact" type="checkbox" value="have-symptom" form="person-report" >
+                        <label for="people-in-contact">Người có biểu hiện (Sốt, ho, khó thở, viêm phổi)</label><br>
+                    </div>
+                </div>
+                
+                <button id="save-info-btn" class="btn btn-success rounded-pill" type="submit" form="person-report">Lưu thông tin</button>
+                
+            </div>
+        </div>    
+    </div>
+    <script src="https://kit.fontawesome.com/1de341d6e9.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>

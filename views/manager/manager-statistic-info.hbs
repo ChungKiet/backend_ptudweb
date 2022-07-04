@@ -1,0 +1,309 @@
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- CSS only -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Changa+One&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="css/manager-statistic-info.css" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+   <title>Thống kê thông tin</title>
+</head>
+<body>
+   <header class="d-flex flex-row">
+      <h1>COVID-19</h1>
+      <nav id="toolbar">
+          <a class="mx-5" id="to-homepage" href="manager-add-people-related-to-covid.htm">Trang chủ</a>
+          <a class="mx-5" id="to-product-management" href="manager-set-of-product.html">Gói nhu yêu phẩm</a>
+      </nav>
+      <div class="dropdown me-5" id="satistic-pop-up">
+         <button class="dropbtn">Thống kê và quản lý </button>
+         <div class="dropdown-content">
+             <a href="manager-add-people-related-to-covid.htm">Quản lý người liên quan đến COVID</a>
+             <a href="manager-statistic-info.html">Thống kê số liệu</a>
+             <a href="manager-update-the-min-payment.html">Điều chỉnh mức thanh toán tối thiểu</a>
+         </div>
+     </div>
+
+      
+
+      <div id="profile-area" class="d-flex flex-row">
+          
+          <!-- <i class="fa-solid fa-user "></i> -->
+          <p id="username">Nguyễn Văn A</p>
+          <button id="btn-profile" class="border-0 bg-transparent"><i class="fa-solid fa-user"></i></button>
+
+          <div class="dropdown" id="account-menu-pop-up">
+              <button id="btn-profile" class="border-0 bg-transparent"><i class="fa-solid fa-caret-down"></i></button>
+              <div class="dropdown-content">
+                  <a href="manager-profile.htm">Tài khoản</a>
+                  <a href="index.html">Đăng xuất</a>
+              </div>
+          </div>
+      
+      </div>
+  </header>
+   <div class="container-fluid no-pad row">
+      <aside class="col-2 aside-background bg-navbar vh-100 no-pad no-marg">
+         <ul class="navbar-nav mb-2 mb-lg-0" style="list-style: none; margin: 0;">
+            <li class="nav-item no-marg">
+               <h4 class="text-center text-dark border-bottom border-end border-dark pb-2">
+                  <a class="nav-link text-dark" href="#">Tổng quát</a>
+               </h4>
+            </li>
+            <li class="nav-item no-marg">
+               <h4 class="text-center text-dark border-bottom border-dark pb-2">
+                  <a class="nav-link text-brown" href="#">Trạng thái ca nhiểm</a>
+               </h4>
+            </li>
+            <li class="nav-item no-marg">
+               <h4 class="text-center text-dark border-bottom border-dark pb-2">
+                  <a class="nav-link text-brown" href="#">Tiêu thụ nhu yếu phẩm</a>
+               </h4>
+            </li>
+            <li class="nav-item no-marg">
+               <h4 class="text-center text-dark border-bottom border-dark pb-2">
+                  <a class="nav-link text-brown" href="#">Tiêu thụ sản phẩm</a>
+               </h4>
+            </li>
+         </ul>
+      </aside>
+      <div class="col-10 no-pad" >
+         <div class="d-inline bg-navbar p-2">
+            <div class="half-of-width text-white no-pad-right text-center bg-navbar d-inline-block border-end">
+               <a class="nav-link text-white" href="manager-statistic-info.html">Thông số</a>
+            </div>
+            <div class="half-of-width text-white no-pad text-center bg-navbar d-inline-block">
+               <a class="nav-link text-white" href="manager-statistic-chart.html">Biểu đồ</a>
+            </div>
+         </div>
+         <div class="ms-5 mt-5"> Tổng tích lũy trạng thái ca nhiểm</div>
+         <div class="row d-inline-block">
+            <div class="ms-5 mt-2  d-inline"> F0:</div>
+            <div class= "ms-5 d-inline">F1:     </div>
+            <div class="ms-5 d-inline">F2: </div>
+         </div>
+         <div class="ms-5 mt-2 align-items-center">
+            <table class="ms-5">
+               <tr>
+                  <th class="bg-gray">Trạng thái / Ngày</th>
+                  <th class="bg-light-gray"> 01/03 </th>
+                  <th class="bg-light-gray"> 02/03 </th>
+                  <th class="bg-light-gray"> 03/03 </th>
+                  <th class="bg-light-gray"> 04/03 </th>
+                  <th class="bg-light-gray"> 05/03 </th>
+                  <th class="bg-light-gray"> 06/03 </th>
+                  <th class="bg-light-gray"> 07/03 </th>
+               </tr>
+               <tr>
+                  <td class="bg-light-gray">F0</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+               </tr>
+               <tr>
+                  <td class="bg-light-gray">F1</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+               </tr>
+               <tr>
+                  <td class="bg-light-gray">F2</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+               </tr>
+            </table>
+         </div>
+         <div class="ms-5 mt-3">
+            <div class="ms-5">
+               Thống kê từ ngày 1/3 đến ngày 7/3
+            </div>
+            <button class="mt-2 ms-5 p-2 hafl-border"><i class='fas fa-angle-left' style='font-size:20px'></i>Trước</button>
+            <button class="ms-3 p-2 hafl-border">Tiếp <i class='fas fa-angle-right' style='font-size:20px'></i></button>
+         </div>
+         <div class="ms-5 mt-5"> Số ca chuyển trạng thái</div>
+         <div class="row d-inline-block">
+            <div class="ms-5 mt-2  d-inline"> F2 - F1:</div>
+            <div class= "ms-5 d-inline">F1 - F0:     </div>
+            <div class="ms-5 d-inline">Khỏi bệnh: </div>
+         </div>
+         <div class="ms-5 mt-2 align-items-center">
+            <table class="ms-5">
+               <tr>
+                  <th class="bg-gray">Trạng thái / Ngày</th>
+                  <th class="bg-light-gray"> 01/03 </th>
+                  <th class="bg-light-gray"> 02/03 </th>
+                  <th class="bg-light-gray"> 03/03 </th>
+                  <th class="bg-light-gray"> 04/03 </th>
+                  <th class="bg-light-gray"> 05/03 </th>
+                  <th class="bg-light-gray"> 06/03 </th>
+                  <th class="bg-light-gray"> 07/03 </th>
+               </tr>
+               <tr>
+                  <td class="bg-light-gray">F2 - F1</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+               </tr>
+               <tr>
+                  <td class="bg-light-gray">F1 - F0</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+               </tr>
+               <tr>
+                  <td class="bg-light-gray">Khỏi bệnh</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+               </tr>
+            </table>
+         </div>
+         <div class="ms-5 mt-3">
+            <div class="ms-5">
+               Thống kê từ ngày 1/3 đến ngày 7/3
+            </div>
+            <button class="mt-2 ms-5 p-2 hafl-border"><i class='fas fa-angle-left' style='font-size:20px'></i>Trước</button>
+            <button class="ms-3 p-2 hafl-border">Tiếp <i class='fas fa-angle-right' style='font-size:20px'></i></button>
+         </div>
+         <div class="ms-5 mt-5"> Thống kê tiêu thụ nhu yếu phẩm</div>
+         <div class="ms-5 mt-2 align-items-center">
+            <table class="ms-5">
+               <tr>
+                  <th class="bg-gray">Tên gói / Mốc thời gian</th>
+                  <th class="bg-light-gray"> Hôm nay</th>
+                  <th class="bg-light-gray"> Ba ngày gần đây </th>
+                  <th class="bg-light-gray"> Tuần này </th>
+                  <th class="bg-light-gray"> Tháng này </th>
+                  <th class="bg-light-gray"> Tháng trước </th>
+               </tr>
+               <tr>
+                  <td class="bg-light-gray">Vệ sinh cá nhân</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+               </tr>
+               <tr>
+                  <td class="bg-light-gray">Tắm giặt</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+               </tr>
+               <tr>
+                  <td class="bg-light-gray">Dụng cụ ăn uống</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+               </tr>
+            </table>
+         </div>
+         <div class="ms-5 mt-5"> Thống kê tiêu thụ sản phẩm</div>
+         <div class="ms-5 mt-2 align-items-center">
+            <table class="ms-5">
+               <tr>
+                  <th class="bg-gray">Tên gói / Mốc thời gian</th>
+                  <th class="bg-light-gray"> Hôm nay</th>
+                  <th class="bg-light-gray"> Ba ngày gần đây </th>
+                  <th class="bg-light-gray"> Tuần này </th>
+                  <th class="bg-light-gray"> Tháng này </th>
+                  <th class="bg-light-gray"> Tháng trước </th>
+               </tr>
+               <tr>
+                  <td class="bg-light-gray">Vệ sinh cá nhân</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+               </tr>
+               <tr>
+                  <td class="bg-light-gray">Tắm giặt</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+               </tr>
+               <tr>
+                  <td class="bg-light-gray">Dụng cụ ăn uống</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+               </tr>
+            </table>
+         </div>
+         <div class="ms-5 mt-5"> Thống kê dư nợ và thanh toán</div>
+         <div class="ms-5 mt-2 align-items-center">
+            <table class="ms-5 mb-5">
+               <tr>
+                  <th class="bg-gray">Trạng thái / Thời gian</th>
+                  <th class="bg-light-gray"> 1 tuần</th>
+                  <th class="bg-light-gray"> 2 tuần</th>
+                  <th class="bg-light-gray"> 3 tuần</th>
+                  <th class="bg-light-gray"> 4 tuần</th>
+                  <th class="bg-light-gray"> 2 tháng trước </th>
+                  <th class="bg-light-gray"> 3 tháng trước </th>
+               </tr>
+               <tr>
+                  <td class="bg-light-gray">Dư nợ</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+               </tr>
+               <tr>
+                  <td class="bg-light-gray">Thanh toán</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+               </tr>
+            </table>
+         </div>
+      </div>
+   </div>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+   <script src="https://kit.fontawesome.com/413ef06077.js" crossorigin="anonymous"></script>
+</body>
+</html>

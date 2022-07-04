@@ -1,25 +1,62 @@
+const MovementHis = require("../models/movement_history");
 const User = require("../models/user");
 class ManagerController {  
 
    // [POST] /manager/register --> Create new user (call for manager)
    async add_user(req, res, next) {
-      const { id, username,  name, password, user_type, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
-      console.log(id, username,  name, password, "Testsererojoajidso")
-      const userExists = await User.findOne({ username : username });
-      if (userExists) {
-            res.send({
-               "msg": 3, 'user': null
-            });
+      if (!req.url.includes('?')) {
+         console.log('req null');
+         res.status(200).render('manager/manager-person-related-to-covid-info',{
+            message: 1,
+            layout:'layout1.hbs',
+            style:'../../css/manager-person-related-to-covid-info.css',
+            title:'Thêm người liên quan Covid'
+         });
+      }
+      else{
+         console.log("not null");
+         // const { id,  name, user_type, birthday, address, email, phone, min_exchange, quarantine_state, updated_state } = req.body;
+         const id = req.query.id;
+         const name = req.query.name;
+         const user_type = 'user';
+         const birthday = req.query.birthday;
+         const address = req.query.address;
+         const email = req.query.email;
+         const phone = req.query.phone;
+         const min_exchange = 0;
+         const quarantine_state = 0;
+         const updated_state = "2001-01-01T00:00:00.000Z";
+         const password = "0000";
+         const username = id;
+         const userExists = await User.findOne({ id : id });
+         if (userExists) {
+               res.send({
+                  "msg": 3, 'user': null
+               });
          }
-      // try {
          const user = await User.create({id, username, name, password, user_type, birthday, address, email, phone, min_exchange, quarantine_state, updated_state });
-         res.send({ "msg": 1, 'user': user });
-      // }
-      // catch (err) {
-      //    res.status(401).send({
-      //       "msg": 0, 'user': null
-      //    });
-      // }
+         // res.send({ "msg": 1, 'user': user });
+
+         res.status(200).render('manager/manager-add-people-related-to-covid',{
+            message: 1,
+            layout:'layout1.hbs',
+            style:'../../css/manager-add-people-related-to-covid.css',
+            title:'Danh sách người liên quan Covid'
+         });
+
+      }
+      
+   
+   }
+
+   //new user form
+   new_user_form(req, res, next){
+      res.status(200).render('manager/manager-person-related-to-covid-info',{
+         message: 1,
+         layout:'layout1.hbs',
+         style:'../../css/manager-person-related-to-covid-info.css',
+         title:'Thêm người liên quan Covid'
+      });
    }
 
    // delete 
@@ -39,6 +76,31 @@ class ManagerController {
             }
          });
       }
+   }
+
+   async get_all_user(req, res, next) {
+      const page = Number(req.query.page) || 1;
+      const from = (page - 1) * 4;
+      const to = page * 4;
+      const userFind = User.find({}).lean();
+      const movH = MovementHis.find({});
+      let movHis = {};
+      for (let i = 0; i < movH.countDocuments(); i++){
+         movHis[movH[i].id_user] = movH[i];
+      }
+
+      const user = await userFind.exec();
+
+      // res.json({"message": 1, "user": user.slice(from, to), "movHis": movHis})
+      res.status(200).render('manager/manager-add-people-related-to-covid',{
+         message: 1,
+         user: user.slice(from,to),
+         movHis: movHis,
+         layout:'layout1.hbs',
+         style:'../../css/manager-add-people-related-to-covid.css',
+         title:'Danh sách người liên quan Covid'
+      });
+      
    }
 
 }

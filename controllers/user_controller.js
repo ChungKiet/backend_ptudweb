@@ -4,6 +4,36 @@ const VaccineHis = require("../models/vaccine_history");
 
 class UserController {  
 
+   // [POST] /users/register
+   async register(req, res, next) {
+      const { id, username, password } = req.body;
+      try {
+         const user = await User.findOne({ id: id});
+         if (!user){
+            res.json({ "result": 0, "message": "User id is invalid" });
+         }
+         const newUser = await User.updateOne({ id: id}, {$set : {
+            username: username,
+            password: password,
+         }});
+         if (newUser.modifiedCount === 1) {
+            res.json({ "result": 1, "message": "Register success" });
+         }
+         else {
+            res.json({ "result": 0, "message": "Register Failed" });
+         }
+      }
+      catch (err) {
+         res.status(500).send({
+            "error": {
+               "result": 0,
+               "code": 500,
+               "message": "Server internal error. Register failed."
+            }
+         });
+      }
+   }
+
    // [PUT] /users/update_profile ---> manager update
    async update_profile(req, res, next) {
       console.log("new :\n" )
@@ -28,7 +58,7 @@ class UserController {
             "error": {
                "result": 0,
                "code": 500,
-               "message": "Server inernal error. Profile update failed."
+               "message": "Server internal error. Profile update failed."
             }
          });
       }

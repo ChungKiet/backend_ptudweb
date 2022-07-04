@@ -174,3 +174,8 @@ aside{
     text-align: center;
     color: #609B53;
 }
+button{
+    border: none;
+    background-color: #FFF;
+    color: #609B53;
+}
